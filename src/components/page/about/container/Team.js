@@ -169,7 +169,7 @@ const get_member_data = riseup_team_member_data.map((single_member, i) => {
     const get_socal_all_data = single_member.social_media.map((single_social, i) => {
         return (
             <li key={i}>
-                <a rel="noopener noreferrer" href={single_social} target="_blank"><i className={single_social.social_icon}></i></a>
+                <a rel="noopener noreferrer" href={single_social.social_link} target="_blank"><i className={single_social.social_icon}></i></a>
             </li>
         )
     });
@@ -179,9 +179,7 @@ const get_member_data = riseup_team_member_data.map((single_member, i) => {
             <div className="team-item">
                 <div className="team-member">
                     <figure className="team-member-img">
-                        <a rel="noopener noreferrer" href="/">
                             <img src={single_member.member_img} alt={single_member.member_alt} />
-                        </a>
                     </figure>
                     <div className="team-member-meta">
                         <ul className="list-unstyled team-social-links">
@@ -190,7 +188,7 @@ const get_member_data = riseup_team_member_data.map((single_member, i) => {
                     </div>
                 </div>
                 <div className="team-info">
-                    <h3><a rel="noopener noreferrer" href="/">{single_member.member_name}</a></h3>
+                    <h3>{single_member.member_name}</h3>
                     <p>{single_member.member_designation}</p>
                 </div>
             </div>

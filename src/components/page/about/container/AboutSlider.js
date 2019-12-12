@@ -31,7 +31,6 @@ class AboutSlider extends Component {
         const settings = {
             className: "center",
             centerMode: true,
-            infinite: true,
             centerPadding: "0",
             swipeToSlide: true,
             slidesToShow: 3,

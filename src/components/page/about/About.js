@@ -9,10 +9,18 @@ import award from '../../../assets/img/award.png';
 import ictAward from '../../../assets/img/ict-award.png';
 import processImg from '../../../assets/img/our-process.png';
 import { Link } from "react-router-dom";
+import WOW from 'wowjs';
 import $ from 'jquery';
+// import $ from 'jquery';
 class About extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
+        // Activated WoW Js
+        new WOW.WOW({
+            live: true,
+            mobile: false,
+        }).init();
+        // End Activated WoW Js
     }
     render() {
         return (
@@ -25,13 +33,13 @@ class About extends Component {
                             <div className="about-intro-inner">
                                 <div className="col-lg-6">
                                     <div className="content-block">
-                                        <h2><span className="text-color">Your partners</span><br />in the digital age.</h2>
-                                        <p>We help entrepreneurs and businesses build products that solve everyday problems through a creative and conscientioususe of technology.</p>
+                                        <h2 className="wow fadeInUp" animation-delay="0.2s" data-wow-delay="0.2s"><span className="text-color">Your partners</span><br />in the digital age.</h2>
+                                        <p className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">We help entrepreneurs and businesses build products that solve everyday problems through a creative and conscientioususe of technology.</p>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="image-block float-right">
-                                        <img src={aboutintro} alt="" />
+                                        <img className="wow pulse" animation-delay="0.6s" data-wow-delay="0.6s" src={aboutintro} alt="" />
 
                                     </div>
                                 </div>
@@ -72,11 +80,11 @@ class About extends Component {
                         <div className="row">
                             <div className="col-lg-5 col-md-5">
                                 <div className="left-sidebar">
-                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><span></span>Our Promise</a>
-                                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><span></span>Our Mission</a>
-                                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><span></span>Our Vision</a>
-                                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><span></span>Our Culture</a>
+                                    <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                        <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><span></span>Our Promise</a>
+                                        <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><span></span>Our Mission</a>
+                                        <a className="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><span></span>Our Vision</a>
+                                        <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><span></span>Our Culture</a>
                                     </div>
                                     {/* <div className="left-sidebar">
                                     <div className="wrap"></div>
@@ -90,20 +98,20 @@ class About extends Component {
                                 </div>
                             </div>
                             <div className="col-lg-7 col-md-7">
-                                <div class="tab-content" id="v-pills-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <div className="tab-content" id="v-pills-tabContent">
+                                    <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                         <p>We understand that the decision to build a new product, and the team you choose to build it with, is a crucial, and even scary decision. That’s why we give you our promise: to do our very best and to always strive to do the right thing for your project, your users, and your team. We want you to think of us as your partners in this journey. So ask us anything!</p>
                                         <p>We understand that the decision to build a new product, and the team you choose to build it with, is a crucial, and even scary decision. That’s why we give you our promise: to do our very best and to always strive to do the right thing for your project, your users, and your team. We want you to think of us as your partners in this journey. So ask us anything!</p>
                                     </div>
-                                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                    <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                         <p>We understand that the decision to build a new product, and the team you choose to build it with, is a crucial, and even scary decision. That’s why we give you our promise: to do our very best and to always strive to do the right thing for your project, your users, and your team. We want you to think of us as your partners in this journey. So ask us anything!</p>
                                         <p>We understand that the decision to build a new product, and the team you choose to build it with, is a crucial, and even scary decision. That’s why we give you our promise: to do our very best and to always strive to do the right thing for your project, your users, and your team. We want you to think of us as your partners in this journey. So ask us anything!</p>
                                     </div>
-                                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                    <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                         <p>We understand that the decision to build a new product, and the team you choose to build it with, is a crucial, and even scary decision. That’s why we give you our promise: to do our very best and to always strive to do the right thing for your project, your users, and your team. We want you to think of us as your partners in this journey. So ask us anything!</p>
                                         <p>We understand that the decision to build a new product, and the team you choose to build it with, is a crucial, and even scary decision. That’s why we give you our promise: to do our very best and to always strive to do the right thing for your project, your users, and your team. We want you to think of us as your partners in this journey. So ask us anything!</p>
                                     </div>
-                                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                         <p>We understand that the decision to build a new product, and the team you choose to build it with, is a crucial, and even scary decision. That’s why we give you our promise: to do our very best and to always strive to do the right thing for your project, your users, and your team. We want you to think of us as your partners in this journey. So ask us anything!</p>
                                         <p>We understand that the decision to build a new product, and the team you choose to build it with, is a crucial, and even scary decision. That’s why we give you our promise: to do our very best and to always strive to do the right thing for your project, your users, and your team. We want you to think of us as your partners in this journey. So ask us anything!</p>
                                     </div>
@@ -124,7 +132,7 @@ class About extends Component {
                                 <div className="content-block">
                                     <h3>Our Process</h3>
                                     <p>For an agency like ours having a process that has been refined over the last 10 years is our biggest advantage. It means that your product will be created quickly, efficiently and accurately to meet the needs.</p>
-                                    <Link to="/process">Discover Our Process <i className="fas fa-arrow-right"></i></Link>
+                                    <Link to={`${process.env.PUBLIC_URL}/process`}>Discover Our Process <i className="fas fa-arrow-right"></i></Link>
                                 </div>
                             </div>
                         </div>
@@ -165,8 +173,8 @@ class About extends Component {
                                     <p>National Mobile Application Award 2014</p>
                                     <ul>
                                         <li><span>Category: </span>Entertainment & Lifestyle</li>
-                                        <li><span>Game: </span><a href="/">Tap Tap Ants: Battlefield</a></li> </ul>
-                                    <a href=""><img src={ictAward} alt="Ict Award" /></a>
+                                        <li><span>Game: </span><Link to={`${process.env.PUBLIC_URL}/`}>Tap Tap Ants: Battlefield</Link></li> </ul>
+                                    <img src={ictAward} alt="Ict Award" />
                                 </div>
                             </div>
                         </div>

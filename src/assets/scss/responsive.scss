@@ -1053,7 +1053,7 @@
     .used-technology {
       .technology-wrap {
         margin: 0;
-        a {
+        .border-shadow {
           margin: 35px 30px;
         }
       }
@@ -1670,7 +1670,7 @@
     .used-technology {
       .technology-wrap {
         margin: 0;
-        a {
+        .border-shadow {
           margin: 35px 20px;
         }
       }
@@ -1854,6 +1854,34 @@
     }
   }
   /*----------------------End About Page Css-----------------------------*/
+  
+ /* ----------- Press Kit page css----------- */
+ .press-kit {
+  .section-title {
+    h2 {
+      font-size: 35px;
+      line-height: 45px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+  .our-logo {
+    .company-logo-items {
+      margin: 25px 0;
+    }
+    .cus-btn{
+      margin-top: 20px;
+      display: inline-block;
+    }
+  }
+  .company-logo {
+    .company-logo-items {
+      margin: 25px 0;
+    }
+  }
+}
+/* ----------- End Press Kit page css----------- */
 
   /*----------------------Not Found Page Css-----------------------------*/
   #notfound {
@@ -2457,8 +2485,13 @@
           padding-left: 15px !important;
         }
         .contact-form {
-          .section-title h2 {
-            font-size: 40px;
+          .section-title {
+            h2{
+              font-size: 40px;
+            }
+            p{
+              font-size: 20px;
+            }
           }
           .angle-top {
             width: 50px;
@@ -2563,6 +2596,33 @@
   }
   /*----------------------End About Page Css-----------------------------*/
 
+  /* ----------- Press Kit page css----------- */
+  .press-kit {
+    .section-title {
+      h2 {
+        font-size: 35px;
+        line-height: 45px;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+    .our-logo {
+      .company-logo-items {
+        margin: 25px 0;
+      }
+      .cus-btn{
+        margin-top: 20px;
+        display: inline-block;
+      }
+    }
+    .company-logo {
+      .company-logo-items {
+        margin: 25px 0;
+      }
+    }
+  }
+  /* ----------- End Press Kit page css----------- */
   /*----------------------Not Found Page Css-----------------------------*/
   #notfound {
     .notfound-inner {

@@ -46,15 +46,12 @@ const technology_logo = [
 
 const get_technology_logo = technology_logo.map((single_logo, i) => {
     return (
-        // <div className="col-lg-4 col-md-4 col-sm-4 col-6 text-center" key={i}>
-        //     <a href={single_brand.brand_link} className="border-shadow"><img src={single_brand.barnd_img} alt={single_brand.alt_img} /></a>
-        // </div>
-        <a rel="noopener noreferrer" href={single_logo.logo_link} className="border-shadow" key={i}>
+        <div rel="noopener noreferrer" href={single_logo.logo_link} className="border-shadow" key={i}>
             <div className="img-inner">
                 <img src={single_logo.logo_img} alt={single_logo.alt_img} />
             </div>
             <span>{single_logo.title}</span>
-        </a>
+        </div>
     )
 })
 class Technology extends Component {
@@ -62,48 +59,6 @@ class Technology extends Component {
         return (
             <div className="technology-wrap">
                 {get_technology_logo}
-                {/* <a rel="noopener noreferrer" href="/" className="border-shadow">
-                    <div className="img-inner">
-                        <img src={require('../../../../assets/img/tools-technology/android.png')} alt="" />
-                    </div>
-                    <span>Android</span>
-                </a>
-                <a rel="noopener noreferrer" href="/" className="border-shadow">
-                    <div className="img-inner">
-                        <img src={require('../../../../assets/img/tools-technology/unity.png')} alt="" />
-                    </div>
-                    <span>Unity 2D/3D</span>
-                </a>
-                <a rel="noopener noreferrer" href="/" className="border-shadow">
-                    <div className="img-inner">
-                        <img src={require('../../../../assets/img/tools-technology/csharp.png')} alt="" />
-                    </div>
-                    <span>C#</span>
-                </a>
-                <a rel="noopener noreferrer" href="/" className="border-shadow">
-                    <div className="img-inner">
-                        <img src={require('../../../../assets/img/tools-technology/asp-net.png')} alt="" />
-                    </div>
-                    <span>ASP.NET MVC</span>
-                </a>
-                <a rel="noopener noreferrer" href="/" className="border-shadow">
-                    <div className="img-inner">
-                        <img src={require('../../../../assets/img/tools-technology/react.png')} alt="" />
-                    </div>
-                    <span>ReactJs</span>
-                </a>
-                <a rel="noopener noreferrer" href="/" className="border-shadow">
-                    <div className="img-inner">
-                        <img src={require('../../../../assets/img/tools-technology/c-plus-plus.png')} alt="" />
-                    </div>
-                    <span>Android</span>
-                </a>
-                <a rel="noopener noreferrer" href="/" className="border-shadow">
-                    <div className="img-inner">
-                        <img src={require('../../../../assets/img/tools-technology/laravel.png')} alt="" />
-                    </div>
-                    <span>Android</span>
-                </a> */}
             </div>
         )
     }

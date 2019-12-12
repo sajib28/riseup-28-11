@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Nav from '../../commonTools/Nav';
 import Footer from '../../commonTools/Footer';
 import { Link } from "react-router-dom";
-class AppsDevelopment extends Component {
+class WebSystem extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         var bottomImg = document.getElementsByClassName("bottom-img")[0];
@@ -26,7 +26,7 @@ class AppsDevelopment extends Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="introText display-bottom">
-                                    <h1>Apps Development</h1>
+                                    <h1>Web System</h1>
                                 </div>
                             </div>
                         </div>
@@ -49,10 +49,8 @@ class AppsDevelopment extends Component {
                             </div>
                             <div className="col-lg-8  order-lg-1">
                                 <div className="content-padding">
-                                    <p>We offer design, development, and solution for apps across a range of devices. We have developed many commercially successful apps for Apple App Store, Google Play Store and for some other platform. </p><br />
-
-                                    <p>We have millions of active users on those mobile apps. Some of our apps were also being featured by Apple for our unique creativity, design innovation & user feedback.</p><br />
-                                    <p>We also developed a few apps for our local clients in Bangladesh. Moreover, we are the partner of the Department of Agricultural Extension (DAE), under the Ministry of Agriculture in Bangladesh, to help them build their innovative apps for our local farmers.</p>
+                                    <p>We provide web-based solutions that can improve user impressions over the interactive experiences and increase the retention period of consumers with content management, cloud storage solutions, communication and marketing solutions, and interactive report presentation.</p>
+                                    <p>We also help our clients to advance their online appearance to enhance their day-to-day business activities in the online marketplace. With our web-solutions, our clients are connected with their audience locally as well as globally with strong digital information processing technology.</p>
                                 </div>
                             </div>
                         </div>
@@ -64,13 +62,12 @@ class AppsDevelopment extends Component {
                             <div className="align-middle">
                                 <div className="col-lg-7 order-lg-1">
                                     <div className="content-block">
-                                        <h2>Mobile App Development Solutions</h2>
+                                        <h2>Web System services</h2>
                                         <ul className="list-unstyled list-with-hyphen">
-                                            <li><span></span>iOS Apps development</li>
-                                            <li><span></span>Android Apps development</li>
-                                            <li><span></span>Cross-Platform</li>
-                                            <li><span></span>iOS Apps development</li>
-                                            <li><span></span>Windows Mobile</li>
+                                            <li><span></span>Digital Platform solution</li>
+                                            <li><span></span>Web Portal</li>
+                                            <li><span></span>E-commerce Solution</li>
+                                            <li><span></span>Enterprise Solution</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -152,7 +149,7 @@ class AppsDevelopment extends Component {
                         </div>
                         <div className="row">
                             <div className="col-lg-12">
-                                <Link to={`${process.env.PUBLIC_URL}/work`} className="cus-btn details">See All<i className="fas fa-arrow-right"></i></Link>
+                            <Link to={`${process.env.PUBLIC_URL}/single-app`} className="cus-btn details">See All<i className="fas fa-arrow-right"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -163,4 +160,4 @@ class AppsDevelopment extends Component {
         )
     }
 }
-export default AppsDevelopment;
+export default WebSystem;

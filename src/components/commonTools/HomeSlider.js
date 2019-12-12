@@ -6,12 +6,7 @@ const home_slider = [
         slider_img: require('../../assets/img/home-slider/home-slide-1.jpg'),
         alt_img: 'Rise Up Labs, iOS and Android Mobile Game Developer',
         caption:"<span class='text-uppercase text-color'>Riseup</span><br/>Beyond Reality Driving <br/>into Technology"
-    },
-    {
-        slider_img: require('../../assets/img/home-slider/home-slide-1.jpg'),
-        alt_img: 'Rise Up Labs, iOS and Android Mobile Game Developer',
-        caption:"<span class='text-uppercase text-color'>Riseup</span><br/>Beyond Reality Driving <br/>into Technology"
-    },
+    }
 ]
 
 const get__home_slider = home_slider.map((single_slider, i) => {

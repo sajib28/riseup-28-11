@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import Nav from '../../commonTools/Nav';
 import Footer from '../../commonTools/Footer';
 import Swal from 'sweetalert2';
+import WOW from 'wowjs';
 import $ from 'jquery';
 class Contact extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
+
+        // Activated WoW Js
+        new WOW.WOW({
+            live: true,
+            mobile: false,
+        }).init();
+        // End Activated WoW Js
     }
     
     constructor(props) {
@@ -188,15 +196,15 @@ class Contact extends Component {
                             <div className="vertical-middle">
                                 <div className="col-lg-4 pr-0">
                                     <div className="company-info text-center">
-                                        <div className="company-address">
+                                        <div className="company-address wow fadeInUp" animation-delay="0.2s" data-wow-delay="0.2s">
                                             <img src={require('../../../assets/img/icon/address.png')} alt="" />
                                             <p className="text-center">Floor-B6, Plot-35, Sonargaon<br />Janapath Road, Sector-07,<br />Uttara, Dhaka-1230, Bangladesh</p>
                                         </div>
-                                        <div className="phone">
+                                        <div className="phone wow fadeInUp" animation-delay="0.2s" data-wow-delay="0.2s">
                                             <img src={require('../../../assets/img/icon/phone.png')} alt="" />
                                             <li><a href="tel:01759747387">+88-0175-974-7387</a></li>
                                         </div>
-                                        <div className="email">
+                                        <div className="email wow fadeInUp" animation-delay="0.2s" data-wow-delay="0.2s">
                                             <img src={require('../../../assets/img/icon/mail.png')} alt="" />
                                             <li><a href="mailto:contact@riseuplabs.com">contact@riseuplabs.com</a></li>
                                         </div>
@@ -208,13 +216,13 @@ class Contact extends Component {
                                         <img className="angle-bottom" src={require('../../../assets/img/icon/contact-bottom-angle.png')} alt=""/>
                                         <div className="section-title">
                                             <div className="title text-center">
-                                                <h2 className="text-center">
+                                                <h2 className="text-center wow fadeInUp" animation-delay="0.2s" data-wow-delay="0.2s">
                                                     <span className="text-color">Let's</span> Talk!</h2>
-                                                <p className="text-center">We’d love to hear what you are working on.<br />
+                                                <p className="text-center wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">We’d love to hear what you are working on.<br />
                                                     Drop us a note here and we’ll get back to you within 24 hours.</p>
                                             </div>
                                         </div>
-                                        <form id="ContactForm" onSubmit={this.handleSubmit}>
+                                        <form id="ContactForm" onSubmit={this.handleSubmit} className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">
                                             <div className="row">
                                                 <div className="col-lg-6 col-md-6">
                                                     <div className="form-group">
@@ -262,12 +270,12 @@ class Contact extends Component {
                 <section className="google-map">
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-12 text-center">
+                            <div className="col-lg-12 text-center wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s">
                                 <h2 className="title">Find us on Google Map</h2>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-lg-12">
+                            <div className="col-lg-12 wow zoomIn" animation-delay="0.6s" data-wow-delay="0.6s">
                                 <iframe title="Rise Up Labs Google Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1289.9168693717875!2d90.39585154647231!3d23.87415825798397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c4241b52d99d%3A0xdf7009a05d863ce5!2sRise%20Up%20Labs!5e0!3m2!1sen!2sbd!4v1574333333213!5m2!1sen!2sbd" width="100%" height="493"></iframe>
                             </div>
                         </div>

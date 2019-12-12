@@ -3,6 +3,10 @@ import Nav from '../../commonTools/Nav';
 import Technology from './container/Technology';
 import ScreenshootSlider from './container/ScreenshootSlider';
 import Footer from '../../commonTools/Footer';
+import SocialMedia from '../../commonTools/container/SocialMedia';
+import {
+    Link
+  } from "react-router-dom";
 class SingleApp extends Component {
 componentDidMount() {
     window.scrollTo(0, 0);
@@ -117,22 +121,6 @@ componentDidMount() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* <div className="row">
-                            <div className="vertical-middle">
-                                <div className="col-lg-4">
-                                    <div className="content-block">
-                                        <h2>Screenshots</h2>
-                                    </div>
-
-                                </div>
-                                <div className="col-lg-8">
-                                    <div className="screenshot-slider">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </section>
                 <section className="youtube-channel">
@@ -146,15 +134,10 @@ componentDidMount() {
                                             <h2 className="rawline-semibold">Subscribe to our channel</h2>
                                             <p>Check out what's Rising. Fun videos of all Rise Up Labs games. Come and check out our Youtube channel</p>
                                         </div>
-                                        <img src={require('../../../assets/img//youtube.png')} alt="" />
+                                        <a rel="noopener noreferrer" href="https://www.youtube.com/user/riseuplabs?sub_confirmation=1" target="_blank"><img src={require('../../../assets/img//youtube.png')} alt="" /></a>
                                         <div className="social-media">
                                             <h5>Share: </h5>
-                                            <ul className="list-unstyled list-inline">
-                                                <li><a rel="noopener noreferrer" href="/"><i className="fab fa-facebook-f"></i></a></li>
-                                                <li><a rel="noopener noreferrer" href="/"><i className="fab fa-twitter"></i></a></li>
-                                                <li><a rel="noopener noreferrer" href="/"><i className="fab fa-linkedin-in"></i></a></li>
-                                                <li><a rel="noopener noreferrer" href="/"><i className="fas fa-meh-blank"></i></a></li>
-                                            </ul>
+                                            <SocialMedia/>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +167,7 @@ componentDidMount() {
                                 <div className="build-story">
                                     <h2 className="rawline-semibold">We can build your story</h2>
                                     <p>Through the years we have partnered with great companies and entrepreneurs all over the world.</p>
-                                    <a rel="noopener noreferrer" href="/" className="cus-btn details">Get free to Contact<i className="fas fa-arrow-right"></i></a>
+                                    <Link  className="cus-btn details" to={`${process.env.PUBLIC_URL}/contact`}>Get free to Contact<i className="fas fa-arrow-right"></i></Link>
                                 </div>
                             </div>
                         </div>

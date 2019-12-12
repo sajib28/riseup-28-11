@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import BackTop from './BackToTop';
+import SocialMedia from './container/SocialMedia';
 import Swal from 'sweetalert2';
 import $ from 'jquery';
 class Footer extends Component {
@@ -87,16 +88,14 @@ class Footer extends Component {
                                 <li><Link to={`${process.env.PUBLIC_URL}/game-development`}>Game Development</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/web-system`}>Web System</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/x-r-solution`}>XR Solution</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/iets`}>IETS</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/ites`}>ITES</Link></li>
                             </ul>
                         </div>
                         <div className="col-lg-3 col-md-4">
                             <h3>Our Enterprise</h3>
                             <ul className="list-unstyled">
-                            <li><Link to={`${process.env.PUBLIC_URL}/appilian`}>Appilian</Link></li>
-                            <li><Link to={`${process.env.PUBLIC_URL}/riseup-game`}>Riseup Game</Link></li>
-                            <li><Link to={`${process.env.PUBLIC_URL}/xtreme-tech`}>Xtreme Tech</Link></li>
-                            <li><Link to={`${process.env.PUBLIC_URL}/riseup-web-system`}>Riseup Web System</Link></li>
+                                <li><a href="http://appilian.com/" target="_blank">Appilian</a></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/xtreme-tech`}>Xtreme Interactive</Link></li>
                             </ul>
                             <div className="footer-contact">
                                 <h3>Contact Us</h3>
@@ -127,20 +126,13 @@ class Footer extends Component {
 
                                 </form>
                             </div>
-
                             <div className="social-media">
-                                <ul className="list-unstyled list-inline">
-                                    <li><a href="/"><i className="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="/"><i className="fab fa-twitter"></i></a></li>
-                                    <li><a href="/"><i className="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="/"><i className="fas fa-meh-blank"></i></a></li>
-                                    <li><a href="/"><i className="fab fa-youtube"></i></a></li>
-                                </ul>
+                                <SocialMedia/>
                             </div>
                             <div className="term-condition">
                                 <span>&copy; 2019 – Rise up | All Rights Reserved</span>
                                 <ul className="list-unstyled inline">
-                                    <li><a href="/">Terms of Service</a></li>|<li><a href="/">Privacy Policy</a></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/`}>Terms of Service</Link></li>|<li><Link to={`${process.env.PUBLIC_URL}/`}>Privacy Policy</Link></li>
 
                                 </ul>
                             </div>

@@ -161,6 +161,11 @@ button {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
   }
+  &.form-control {
+    &.is-invalid {
+      background: none;
+    }
+  }
 }
 .cus-btn {
   color: $black;
@@ -274,7 +279,6 @@ button {
     background: $black-grey;
     @include transition(all 0.3s linear);
   }
-
   .navbar-brand {
     color: $white;
     margin-left: -215px;
@@ -327,6 +331,9 @@ button {
   }
 }
 .modal-open {
+  #mainMenu {
+    @include transition(all 0.4s cubic-bezier(0.72, 0.16, 0.345, 0.875) 0s);
+  }
 }
 .banner {
   position: relative;
@@ -460,8 +467,15 @@ button {
       position: relative;
       @include transition(all 0.5s ease);
       overflow: hidden;
+      z-index: 99;
+      -ms-transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
       &:hover {
-        transform: scale(0.97);
+        @include transform(scale(0.97));
+        -ms-transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
       }
       .item-bg {
         background-repeat: no-repeat;
@@ -635,6 +649,11 @@ button {
         opacity: 1;
         outline: 0;
         margin-right: 0;
+        position: fixed;
+        top: 50px;
+        right: 20px;
+        z-index: 999;
+        @include transition(all 0.4s cubic-bezier(0.72, 0.16, 0.345, 0.875) 0s);
       }
     }
     .modal-body {
@@ -658,6 +677,8 @@ button {
         }
         .dropdown {
           .dropdown-toggle {
+            @include flexbox();
+            @include align-items(center);
             &:after {
               content: none;
             }
@@ -679,6 +700,7 @@ button {
       }
 
       .company-info {
+        @include transition(all 0.3s linear);
         .contact-info {
           margin: 30px 0;
           li {
@@ -696,18 +718,6 @@ button {
               }
             }
           }
-        }
-      }
-    }
-  }
-  &.fixedCloseBtn {
-    .modal-content {
-      .modal-header {
-        button {
-          position: fixed;
-          // top: 40px;
-          right: 15px;
-          z-index: 999;
         }
       }
     }
@@ -747,7 +757,7 @@ button {
 .scroll-down {
   position: fixed;
   bottom: 140px;
-  left: 0px;
+  right: 0px;
   z-index: 999;
   transform: rotate(-90deg);
   a {
@@ -764,7 +774,7 @@ button {
     font-family: $proximaRegular;
     font-size: 20px;
     // @include text-shadow(0, 3px, 6px, rgba($black, 0.45));
-    color: $white;
+    color: $yellow;
   }
   .arrow-sign {
     position: absolute;
@@ -779,7 +789,7 @@ button {
 .scroll-top {
   position: fixed;
   bottom: 130px;
-  left: 10px;
+  right: 10px;
   z-index: 999;
   transform: rotate(-90deg);
   a {
@@ -989,14 +999,28 @@ button {
 .service-block {
   padding: 40px 0;
   position: relative;
+  // .demo-title{
+  //   .rellax{
+  //     position: relative;
+  //     z-index: 99;
+  //     top:50px;
+  //   }
+  // }
   h2 {
-    font-size: 64px;
+    font-size: 80px;
     line-height: 88px;
     font-family: $rawlineExtraBold;
-    position: absolute;
-    z-index: 9;
+    // position: relative;
+    // z-index: 9;
+    // left: 50px;
+    // top: -60px;
+  }
+  .parallax-outer {
+    position: relative;
+    z-index: 99;
     left: 50px;
-    top: -60px;
+    top: 50px;
+    will-change: transform;
   }
   figure {
     img {
@@ -1184,10 +1208,9 @@ button {
     li {
       width: 25%;
       display: inline-block;
-      a {
-        img {
-          margin: 15px 0;
-        }
+
+      img {
+        margin: 15px 0;
       }
     }
   }
@@ -1209,6 +1232,7 @@ button {
   }
   .image-block {
     max-width: 430px;
+    max-height: 580px;
     img {
       @include box-shadow(3px, 12px, 46px, rgba(246, 239, 239, 0.26));
       width: 100%;
@@ -1234,7 +1258,7 @@ button {
   .swap-items {
     position: relative;
     padding: 50px 0;
-    &:before {
+    .curbe {
       content: "";
       display: block;
       width: 360px;
@@ -1251,7 +1275,7 @@ button {
       bottom: -68px;
     }
     &.reverse-items {
-      &:before {
+      .curbe {
         -webkit-transform: rotate(-33deg);
         -ms-transform: rotate(-33deg);
         transform: rotate(-33deg);
@@ -1263,8 +1287,8 @@ button {
       }
     }
     &:last-child {
-      &:before {
-        content: none;
+      .curbe {
+        display: none;
       }
     }
   }
@@ -1327,6 +1351,13 @@ button {
   }
 }
 
+#home {
+  .scroll-down {
+    .text {
+      color: $white;
+    }
+  }
+}
 /* ----------- End Home page css----------- */
 /*Start Work Page*/
 .work {
@@ -1875,12 +1906,11 @@ button {
       }
       .team-info {
         h3 {
-          a {
-            font-size: 26px;
-            line-height: 38px;
-            color: $black-grey;
-            text-decoration: none;
-          }
+          font-size: 26px;
+          line-height: 38px;
+          color: $black-grey;
+          font-family: $proximaRegular;
+          margin-top: 20px;
         }
         p {
           font-size: 18px;
@@ -1992,10 +2022,14 @@ button {
 
       img {
         @include box-shadow(0, 0, 55px, rgba($black, 0.25));
-        @include transition(all 0.3s ease);
         &.show-top {
           z-index: 10;
-          @include transition(all 0.3s ease);
+          opacity: 1;
+          animation-name: pulse;
+          animation-iteration-count: 1;
+          animation-timing-function: linear;
+          animation-duration: 1.5s;
+          @include transition(all 1s linear);
         }
       }
       .top-img {
@@ -2110,7 +2144,7 @@ button {
             @include flex-wrap(wrap);
             margin-left: -10px;
             margin-right: -10px;
-            a {
+            .border-shadow {
               background: $white;
               min-height: 180px;
               margin: 15px 10px;
@@ -2202,10 +2236,10 @@ button {
 /* -----------  Single App page css----------- */
 .single-app {
   .banner {
-    &:before {
-      background: none;
-      @include box-shadow(0, 20px, 60px, rgba(#f7ff00, 0.2));
-    }
+    // &:before {
+    //   background: none;
+    //   @include box-shadow(0, 20px, 60px, rgba(#f7ff00, 0.2));
+    // }
   }
   .short-info {
     border-bottom: 1px solid rgba($black-grey, 0.2);
@@ -2388,7 +2422,7 @@ button {
       @include flex-wrap(wrap);
       margin-left: -60px;
       margin-right: -60px;
-      a {
+      .border-shadow {
         background: $white;
         min-height: 180px;
         margin: 35px 70px;
@@ -2597,6 +2631,74 @@ button {
 }
 
 /* ----------- End Work page css----------- */
+
+/* ----------- Press Kit page css----------- */
+.press-kit {
+  .banner {
+    &:before {
+      content: "";
+      background: rgba($black, 0.53);
+      @include box-shadow(0, 44px, 99px, rgba(#98833c, 0.25));
+    }
+  }
+  .section-title {
+    h2 {
+      font-size: 44px;
+      line-height: 60px;
+    }
+    p {
+      font-size: 20px;
+      text-align: left;
+      margin-bottom: 0;
+    }
+  }
+  .our-logo {
+    .company-logo-items {
+      max-width: 470px;
+      margin: 40px 0;
+      .border-shadow {
+        @include box-shadow(0, 0, 6px, rgba($black, 0.16));
+        padding: 52px 0;
+        &.inverted {
+          background: #292929;
+        }
+      }
+      h3 {
+        text-align: left;
+        font-size: 24px;
+        font-family: $proximaBold;
+        margin: 15px 0 10px;
+      }
+      p {
+        text-align: left;
+        line-height: 28px;
+      }
+    }
+    .cus-btn {
+      font-size: 22px;
+      font-family: $proximaBold;
+      padding: 12px 30px;
+      @include box-shadow(0, 3px, 6px, rgba($black, 0.43));
+    }
+  }
+  .company-logo {
+    padding: 0 0 40px;
+    .company-logo-items {
+      margin: 40px 0;
+      .border-shadow {
+        padding: 38px 0;
+        @include box-shadow(0, 0, 6px, rgba($black, 0.16));
+      }
+      p {
+        font-size: 20px;
+        margin: 15px 0 0;
+        text-align: left;
+      }
+    }
+  }
+}
+/* ----------- End Press Kit page css----------- */
+
 /* ----------- Not Found page css----------- */
 #notfound {
   .notfound-inner {
@@ -2754,6 +2856,7 @@ footer {
     }
   }
 }
+/* ----------- End Footer css----------- */
 
 .fade-enter {
   opacity: 0.01;
@@ -2779,18 +2882,118 @@ footer {
 span[data-jarallax-element] {
   display: inline-block;
 }
-::-webkit-scrollbar-track{
-  -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
-  background-color: #F5F5F5;
+/*Custom scroll Bar*/
+// #my-scrollbar{
+//   position: fixed;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 100vh;
+//     .scroll-content{
+//       position: relative;
+//       width: 100%;
+//       min-height: 100vh;
+//       overflow: hidden;
+//       .intro{
+//         position: relative;
+//         min-height: 100vh;
+//       }
+//     }
+// }
+
+// ::-webkit-scrollbar-track {
+//   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//   background-color: #f5f5f5;
+// }
+// ::-webkit-scrollbar {
+//   width: 10px;
+//   background-color: #f5f5f5;
+// }
+// ::-webkit-scrollbar-thumb {
+//   background-color: $yellow;
+// }
+/*End Custom scroll Bar*/
+/*Alert Popup  Css*/
+.swal2-container {
+  .swal2-popup {
+    @include border-radius(14px);
+    position: relative;
+    background: #fcfcfc;
+    padding: 40px 20px;
+    @include box-shadow(0, 8px, 18px, rgba($black, 0.3) !important);
+  }
+  .swal2-title {
+    color: $black-grey !important;
+  }
+  .swal2-confirm {
+    font-size: 24px !important;
+    font-family: $proximaBold;
+    color: $black-grey !important;
+    margin-top: 20px;
+    display: inline-block;
+    @include transition(all 0.3s linear);
+    line-height: 30px;
+    @include box-shadow(0, 8px, 18px, rgba($black, 0.5) !important);
+    @include border-radius(15px !important);
+    background: $white !important;
+    &:hover,
+    &:focus {
+      color: $yellow !important;
+      background-image: none !important;
+      @include transition(all 0.3s linear);
+      @include box-shadow(0, 8px, 18px, rgba($black, 0.5) !important);
+    }
+  }
+  .swal2-content {
+    font-family: $proximaRegular;
+    font-size: 25px;
+    color: $black-grey !important;
+    line-height: 40px;
+    font-weight: bold;
+  }
+  .swal2-icon.swal2-success {
+    border-color: #2c8b35 !important;
+    border: 2px solid;
+    // width: 100px;
+    // height: 100px;
+    .swal2-success-line-tip {
+      border-color: #2c8b35 !important;
+      border: 2px solid;
+      // width: 38px !important;
+      background: #2c8b35 !important;
+      // top: 3.35em !important;
+      // left: 15px !important;
+    }
+    .swal2-success-line-long {
+      border-color: #2c8b35 !important;
+      border: 2px solid;
+      background: #2c8b35 !important;
+      // width: 55px !important;
+      // top: 3em !important;
+    }
+    .swal2-success-circular-line-left {
+      background: none !important;
+    }
+    .swal2-success-circular-line-right {
+      background: none !important;
+    }
+    .swal2-success-fix {
+      background: none !important;
+    }
+    .swal2-success-ring {
+      border: none !important;
+    }
+  }
 }
-::-webkit-scrollbar
-{
-    width: 6px;
-    background-color: #F5F5F5;
+/*End Alert Popup  Css*/
+/*Fade In Animation*/
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-::-webkit-scrollbar-thumb
-{
-    background-color: $yellow;
-}
-/* ----------- End Footer css----------- */
+/*End Fade In Animation*/
 @import "./responsive.scss";

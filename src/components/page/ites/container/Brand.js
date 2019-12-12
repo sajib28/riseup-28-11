@@ -35,7 +35,7 @@ const brnad_logo = [
 const get_brnad_logo = brnad_logo.map((single_brand, i) => {
     return (
         <div className="col-lg-4 col-md-4 col-sm-4 col-6 text-center" key={i}>
-            <a href={single_brand.brand_link} className="border-shadow"><img src={single_brand.barnd_img} alt={single_brand.alt_img} /></a>
+            <div href={single_brand.brand_link} className="border-shadow"><img src={single_brand.barnd_img} alt={single_brand.alt_img} /></div>
         </div>
     )
 })

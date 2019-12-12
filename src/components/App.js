@@ -20,61 +20,66 @@ import Career from './page/career/Career';
 import ApplicationForm from './page/career/ApplicationForm';
 import About from './page/about/About';
 import Contact from './page/contact/Contact';
-import Iets from './page/iets/Iets';
+import Ites from './page/ites/Ites';
 import AppsDevelopment from './page/apps-development/AppsDevelopment';
+import GameDevelopment from './page/game-development/GameDevelopment';
+import WebSystem from './page/web-system/WebSystem';
+import XrSolution from './page/xr-solution/XrSolution';
 import SingleApp from './page/single-app/SingleApp';
+import PressKit from './page/press-kit/PressKit';
 import NotFound from './page/NotFound';
 import ComingSoon from './page/ComingSoon';
+import WOW from 'wowjs';
 // import { ParallaxProvider } from 'react-scroll-parallax';
 // import Scrollbar from 'smooth-scrollbar';
 import '../assets/scss/main.scss';
-import $ from 'jquery';
+// import $ from 'jquery';
 class App extends Component {
-    // Sidebar Menu Scroll
     componentDidMount() {
-        // $(document).ready(function () {
-        //     var Menuheight = $("#mainMenu").height();
-        //     $('a[href^="#"]').bind('click', function (e) {
-        //         e.preventDefault();
-        //         $('html, body').stop().animate({
-        //             scrollTop: $($(this).attr('href')).offset().top - Menuheight
-        //         }, 500);
-        //         return false;
-        //     });
-        // });
+        // Activated WoW Js
+        new WOW.WOW({
+            live: true,
+            mobile: false,
+        }).init();
+        // End Activated WoW Js
     }
+    
     render() {
         return (
             <BrowserRouter>
                 <div className="App">
-                <Route render={({ location }) => {
-                      return (
-                    <TransitionGroup className="transition-group">
-                        <CSSTransition
-                            key={location.key}
-                            timeout={{ enter: 300, exit: 300 }}
-                            classNames="fade"
-                        >
-                            <Switch>
-                                <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} />
-                                {/* <Route path={`${process.env.PUBLIC_URL}/#homeService`} exact component={Home} /> */}
-                                <Route path={`${process.env.PUBLIC_URL}/work`} component={Work} />
-                                <Route path={`${process.env.PUBLIC_URL}/work1`} component={Work1} />
-                                <Route path={`${process.env.PUBLIC_URL}/process`} component={Process} />
-                                <Route path={`${process.env.PUBLIC_URL}/career`} render={() => <Career />} />
-                                <Route path={`${process.env.PUBLIC_URL}/about`} component={props => <About {...props} />} />
-                                <Route path={`${process.env.PUBLIC_URL}/contact`} component={props => <Contact {...props} />} />
-                                <Route path={`${process.env.PUBLIC_URL}/application-form`} render={() => <ApplicationForm />} />
-                                <Route path={`${process.env.PUBLIC_URL}/iets`} render={() => < Iets />} />
-                                <Route path={`${process.env.PUBLIC_URL}/apps-development`} render={() => < AppsDevelopment />} />
-                                <Route path={`${process.env.PUBLIC_URL}/single-app`} render={() => < SingleApp />} />
-                                <Route path={`${process.env.PUBLIC_URL}/coming-soon`} render={() => < ComingSoon />} />
-                                <Route path="*" component={NotFound} />
-                            </Switch>
-                      </CSSTransition>
-                     </TransitionGroup>
-                     )
-                    }}/>
+                    <Route render={({ location }) => {
+                        return (
+                            <TransitionGroup className="transition-group">
+                                <CSSTransition
+                                    key={location.key}
+                                    timeout={{ enter: 300, exit: 300 }}
+                                    classNames="fade"
+                                >
+                                    <Switch>
+                                        <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} />
+                                        {/* <Route path={`${process.env.PUBLIC_URL}/#homeService`} exact component={Home} /> */}
+                                        <Route path={`${process.env.PUBLIC_URL}/work`} component={Work} />
+                                        <Route path={`${process.env.PUBLIC_URL}/work1`} component={Work1} />
+                                        <Route path={`${process.env.PUBLIC_URL}/process`} component={Process} />
+                                        <Route path={`${process.env.PUBLIC_URL}/career`} render={() => <Career />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/about`} component={props => <About {...props} />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/contact`} component={props => <Contact {...props} />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/application-form`} render={() => <ApplicationForm />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/ites`} render={() => < Ites />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/apps-development`} render={() => < AppsDevelopment />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/game-development`} render={() => < GameDevelopment />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/web-system`} render={() => < WebSystem />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/xr-solution`} render={() => < XrSolution />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/single-app`} component={props => <SingleApp {...props} />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/press-kit`} component={props => <PressKit {...props} />} />
+                                        <Route path={`${process.env.PUBLIC_URL}/coming-soon`} render={() => < ComingSoon />} />
+                                        <Route path="*" component={NotFound} />
+                                    </Switch>
+                                </CSSTransition>
+                            </TransitionGroup>
+                        )
+                    }} />
                 </div>
             </BrowserRouter>
         )

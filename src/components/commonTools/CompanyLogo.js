@@ -46,8 +46,8 @@ const company_logo = [
 // Get Company Logo data
 const get_company_logo = company_logo.map((single_logo, i) => {
     return (
-        <li key={i}>
-            <a rel="noopener noreferrer" href={single_logo.logo_link}><img src={single_logo.logo_img} alt={single_logo.alt_logo} /></a>
+        <li className="wow zoomIn" animation-delay="0.5s" data-wow-delay="0.5s" key={i}>
+            <img src={single_logo.logo_img} alt={single_logo.alt_logo} />
         </li>
     )
 })

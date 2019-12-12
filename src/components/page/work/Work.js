@@ -4,13 +4,27 @@ import Nav from '../../commonTools/Nav';
 import Footer from '../../commonTools/Footer';
 import mixitup from 'mixitup';
 import $ from 'jquery';
+import WOW from 'wowjs';
 // import {Link} from "react-router-dom";
 
 class Work extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
-        mixitup('.projectfilter');
-        $(".mix:odd").addClass('reverse-items'); 
+        // Activated WoW Js
+        new WOW.WOW({
+            live: true,
+            mobile: false,
+        }).init();
+        // End Activated WoW Js
+        var mixer = mixitup('.projectfilter', {
+            selectors: {
+                target: '.mix',
+                control: 'button.data-filter'
+            }
+        });
+        $(".mix:odd").addClass('reverse-items');
+
+
     }
 
     render() {
@@ -22,8 +36,8 @@ class Work extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
-                                <div className="introText">
-                                    <h1><span className="text-color">Some Of Our</span><br />Software Solutions</h1>
+                                <div className="introText col-lg-3wow fadeInUp" animation-delay="0.2s" data-wow-delay="0.2s">
+                                    <h1 className="wow fadeInUp" animation-delay="0.2s" data-wow-delay="0.2s"><span className="text-color">Some Of Our</span><br />Software Solutions</h1>
                                 </div>
                             </div>
                         </div>
@@ -33,15 +47,15 @@ class Work extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12 text-center">
-                            <button type="button" data-filter="all">All</button>
-                            <button type="button" data-filter=".client">Client</button>
-                            <button type="button" data-filter=".rise-up">Rise up</button>
-                            <button type="button" data-filter=".app">App</button>
-                            <button type="button" data-filter=".game">Game</button>
-                            <button type="button" data-filter=".x-r">X-R</button>
-                            <button type="button" data-filter=".web-system">Web System</button>
+                                <button className="data-filter" type="button" data-filter="all">All</button>
+                                <button className="data-filter" type="button" data-filter=".client">Client</button>
+                                <button className="data-filter" type="button" data-filter=".rise-up">Rise up</button>
+                                <button className="data-filter" type="button" data-filter=".app">App</button>
+                                <button className="data-filter" type="button" data-filter=".game">Game</button>
+                                <button className="data-filter" type="button" data-filter=".x-r">X-R</button>
+                                <button className="data-filter" type="button" data-filter=".web-system">Web System</button>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div className="projectfilter app-list">

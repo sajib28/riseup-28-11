@@ -10787,6 +10787,12 @@ button:focus {
   -moz-box-shadow: none !important;
 }
 
+input.form-control.is-invalid,
+textarea.form-control.is-invalid,
+button.form-control.is-invalid {
+  background: none;
+}
+
 .cus-btn {
   color: #000000;
   font-size: 16px;
@@ -10979,6 +10985,11 @@ button:focus {
   padding: 0;
 }
 
+.modal-open #mainMenu {
+  -webkit-transition: all 0.4s cubic-bezier(0.72, 0.16, 0.345, 0.875) 0s;
+  transition: all 0.4s cubic-bezier(0.72, 0.16, 0.345, 0.875) 0s;
+}
+
 .banner {
   position: relative;
   padding: 0;
@@ -11093,6 +11104,7 @@ button:focus {
 
 .page .accordion .card-header h2 {
   line-height: 0;
+  background: transparent;
 }
 
 .page .accordion button {
@@ -11177,11 +11189,19 @@ button:focus {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   overflow: hidden;
+  z-index: 99;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 .project .app-list .list-items:hover {
   -webkit-transform: scale(0.97);
-          transform: scale(0.97);
+  -moz-transition: scale(0.97);
+  -ms-transform: scale(0.97);
+  -o-transition: scale(0.97);
+  transform: scale(0.97);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 .project .app-list .list-items .item-bg {
@@ -11387,6 +11407,12 @@ button:focus {
   opacity: 1;
   outline: 0;
   margin-right: 0;
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 999;
+  -webkit-transition: all 0.4s cubic-bezier(0.72, 0.16, 0.345, 0.875) 0s;
+  transition: all 0.4s cubic-bezier(0.72, 0.16, 0.345, 0.875) 0s;
 }
 
 .fullscreen-menu .modal-content .modal-body p {
@@ -11406,6 +11432,17 @@ button:focus {
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   color: #f26a11;
+}
+
+.fullscreen-menu .modal-content .modal-body .left-menu .dropdown .dropdown-toggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .fullscreen-menu .modal-content .modal-body .left-menu .dropdown .dropdown-toggle:after {
@@ -11432,6 +11469,11 @@ button:focus {
   background: none;
 }
 
+.fullscreen-menu .modal-content .modal-body .company-info {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
 .fullscreen-menu .modal-content .modal-body .company-info .contact-info {
   margin: 30px 0;
 }
@@ -11453,12 +11495,6 @@ button:focus {
 
 .fullscreen-menu .modal-content .modal-body .company-info .contact-info li a:hover {
   color: #f26a11;
-}
-
-.fullscreen-menu.fixedCloseBtn .modal-content .modal-header button {
-  position: fixed;
-  right: 15px;
-  z-index: 999;
 }
 
 .social-media {
@@ -11498,7 +11534,7 @@ button:focus {
 .scroll-down {
   position: fixed;
   bottom: 140px;
-  left: 0px;
+  right: 0px;
   z-index: 999;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
@@ -11519,7 +11555,7 @@ button:focus {
 .scroll-down .text {
   font-family: "proxima_novaregular";
   font-size: 20px;
-  color: #ffffff;
+  color: #f26a11;
 }
 
 .scroll-down .arrow-sign {
@@ -11535,7 +11571,7 @@ button:focus {
 .scroll-top {
   position: fixed;
   bottom: 130px;
-  left: 10px;
+  right: 10px;
   z-index: 999;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
@@ -11679,7 +11715,7 @@ button:focus {
 }
 
 .home-service .section-title {
-  margin-bottom: 0;
+  margin-bottom: 50px;
 }
 
 .home-sidebar {
@@ -11782,13 +11818,17 @@ button:focus {
 }
 
 .service-block h2 {
-  font-size: 64px;
+  font-size: 80px;
   line-height: 88px;
   font-family: "rawlineextrabold";
-  margin-bottom: -25px;
+}
+
+.service-block .parallax-outer {
   position: relative;
-  z-index: 9;
-  margin-left: 40px;
+  z-index: 99;
+  left: 50px;
+  top: 50px;
+  will-change: transform;
 }
 
 .service-block figure img {
@@ -11799,6 +11839,7 @@ button:focus {
   max-width: 1050px;
   margin: 0 auto;
   display: block;
+  position: relative;
 }
 
 .service-block .apps-wrapper .apps-content .apps-details {
@@ -12015,7 +12056,7 @@ button:focus {
   display: inline-block;
 }
 
-.company-logo ul li a img {
+.company-logo ul li img {
   margin: 15px 0;
 }
 
@@ -12038,6 +12079,7 @@ button:focus {
 
 .home-work .image-block {
   max-width: 430px;
+  max-height: 580px;
 }
 
 .home-work .image-block img {
@@ -12070,7 +12112,7 @@ button:focus {
   padding: 50px 0;
 }
 
-.home-work .swap-items:before {
+.home-work .swap-items .curbe {
   content: "";
   display: block;
   width: 360px;
@@ -12086,7 +12128,7 @@ button:focus {
   bottom: -68px;
 }
 
-.home-work .swap-items.reverse-items:before {
+.home-work .swap-items.reverse-items .curbe {
   -webkit-transform: rotate(-33deg);
   transform: rotate(-33deg);
 }
@@ -12095,8 +12137,8 @@ button:focus {
   float: right;
 }
 
-.home-work .swap-items:last-child:before {
-  content: none;
+.home-work .swap-items:last-child .curbe {
+  display: none;
 }
 
 .contact-form .section-title p {
@@ -12166,6 +12208,10 @@ button:focus {
   border-color: #dc3545;
 }
 
+#home .scroll-down .text {
+  color: #ffffff;
+}
+
 /* ----------- End Home page css----------- */
 /*Start Work Page*/
 .work .list-items {
@@ -12232,6 +12278,7 @@ button:focus {
 
 .career .career-position .accordion .card .card-header {
   border: none;
+  background: transparent;
 }
 
 .career .career-position .accordion .card .card-header button {
@@ -12240,6 +12287,7 @@ button:focus {
   padding: 35px 0;
   -webkit-box-shadow: none;
           box-shadow: none;
+  background: transparent;
 }
 
 .career .career-position .accordion .card .card-header button.collapsed {
@@ -12296,7 +12344,7 @@ button:focus {
   margin-top: 20px;
   display: inline-block;
   line-height: 30px;
-  margin-left: -40px;
+  margin-left: -30px;
   -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
   -ms-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
   -o-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
@@ -12628,27 +12676,11 @@ button:focus {
   position: relative;
 }
 
-.about .about-sidebar-menu .left-sidebar .navigation {
-  margin: 0;
-  padding: 0;
-}
-
-.about .about-sidebar-menu .left-sidebar .navigation li {
-  list-style-type: none;
-}
-
-.about .about-sidebar-menu .left-sidebar .navigation li.is-current .nav-link {
-  color: #f26a11;
-}
-
-.about .about-sidebar-menu .left-sidebar .navigation li.is-current .nav-link span {
-  opacity: 1;
-}
-
-.about .about-sidebar-menu .left-sidebar .navigation li a.nav-link {
+.about .about-sidebar-menu .left-sidebar a.nav-link {
   font-family: "proxima_novabold";
   font-size: 44px;
   text-decoration: none;
+  background: none;
   color: #7d7d7d;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12669,9 +12701,11 @@ button:focus {
   -webkit-box-direction: normal;
           flex-direction: row;
   padding: 5px 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-.about .about-sidebar-menu .left-sidebar .navigation li a.nav-link span {
+.about .about-sidebar-menu .left-sidebar a.nav-link span {
   display: inline-block;
   width: 35px;
   height: 5px;
@@ -12680,16 +12714,14 @@ button:focus {
   opacity: 0;
 }
 
-.about .about-sidebar-menu .left-sidebar .sidemenu.fixed {
-  position: fixed;
+.about .about-sidebar-menu .left-sidebar a.nav-link.active {
+  margin-left: 50px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-.about .about-sidebar-menu .left-sidebar .sidemenu.sidebarstatic {
-  position: absolute;
-}
-
-.about .about-sidebar-menu .page-section {
-  padding: 40px 0;
+.about .about-sidebar-menu .left-sidebar a.nav-link.active span {
+  opacity: 1;
 }
 
 .about .award {
@@ -12825,11 +12857,12 @@ button:focus {
   margin: 15px 0;
 }
 
-.about .team .team-item .team-info h3 a {
+.about .team .team-item .team-info h3 {
   font-size: 26px;
   line-height: 38px;
   color: #221f1f;
-  text-decoration: none;
+  font-family: "proxima_novaregular";
+  margin-top: 20px;
 }
 
 .about .team .team-item .team-info p {
@@ -12977,14 +13010,21 @@ button:focus {
   -ms-box-shadow: 0 0 55px rgba(0, 0, 0, 0.25);
   -o-box-shadow: 0 0 55px rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 55px rgba(0, 0, 0, 0.25);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
 }
 
 .top-bottom-image .align-middle .double-img img.show-top {
   z-index: 10;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  opacity: 1;
+  -webkit-animation-name: pulse;
+          animation-name: pulse;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .top-bottom-image .align-middle .double-img .top-img {
@@ -13125,7 +13165,7 @@ button:focus {
   margin-right: -10px;
 }
 
-.iets .tools-and-tech .accordion .card .card-body .card-body-inner a {
+.iets .tools-and-tech .accordion .card .card-body .card-body-inner .border-shadow {
   background: #ffffff;
   min-height: 180px;
   margin: 15px 10px;
@@ -13153,11 +13193,11 @@ button:focus {
   text-decoration: none;
 }
 
-.iets .tools-and-tech .accordion .card .card-body .card-body-inner a .img-inner {
+.iets .tools-and-tech .accordion .card .card-body .card-body-inner .border-shadow .img-inner {
   max-height: 100px;
 }
 
-.iets .tools-and-tech .accordion .card .card-body .card-body-inner a span {
+.iets .tools-and-tech .accordion .card .card-body .card-body-inner .border-shadow span {
   color: #221f1f;
   font-size: 18px;
   line-height: 22px;
@@ -13232,14 +13272,6 @@ button:focus {
 
 /* -----------  End Apps details page css----------- */
 /* -----------  Single App page css----------- */
-.single-app .banner:before {
-  background: none;
-  -webkit-box-shadow: 0 20px 60px rgba(247, 255, 0, 0.2);
-  -ms-box-shadow: 0 20px 60px rgba(247, 255, 0, 0.2);
-  -o-box-shadow: 0 20px 60px rgba(247, 255, 0, 0.2);
-  box-shadow: 0 20px 60px rgba(247, 255, 0, 0.2);
-}
-
 .single-app .short-info {
   border-bottom: 1px solid rgba(34, 31, 31, 0.2);
 }
@@ -13748,6 +13780,89 @@ button:focus {
 }
 
 /* ----------- End Work page css----------- */
+/* ----------- Press Kit page css----------- */
+.press-kit .banner:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: 0 44px 99px rgba(152, 131, 60, 0.25);
+  -ms-box-shadow: 0 44px 99px rgba(152, 131, 60, 0.25);
+  -o-box-shadow: 0 44px 99px rgba(152, 131, 60, 0.25);
+  box-shadow: 0 44px 99px rgba(152, 131, 60, 0.25);
+}
+
+.press-kit .section-title h2 {
+  font-size: 44px;
+  line-height: 60px;
+}
+
+.press-kit .section-title p {
+  font-size: 20px;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.press-kit .our-logo .company-logo-items {
+  max-width: 470px;
+  margin: 40px 0;
+}
+
+.press-kit .our-logo .company-logo-items .border-shadow {
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  -ms-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  -o-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  padding: 52px 0;
+}
+
+.press-kit .our-logo .company-logo-items .border-shadow.inverted {
+  background: #292929;
+}
+
+.press-kit .our-logo .company-logo-items h3 {
+  text-align: left;
+  font-size: 24px;
+  font-family: "proxima_novabold";
+  margin: 15px 0 10px;
+}
+
+.press-kit .our-logo .company-logo-items p {
+  text-align: left;
+  line-height: 28px;
+}
+
+.press-kit .our-logo .cus-btn {
+  font-size: 22px;
+  font-family: "proxima_novabold";
+  padding: 12px 30px;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.43);
+  -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.43);
+  -o-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.43);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.43);
+}
+
+.press-kit .company-logo {
+  padding: 0 0 40px;
+}
+
+.press-kit .company-logo .company-logo-items {
+  margin: 40px 0;
+}
+
+.press-kit .company-logo .company-logo-items .border-shadow {
+  padding: 38px 0;
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  -ms-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  -o-box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+}
+
+.press-kit .company-logo .company-logo-items p {
+  font-size: 20px;
+  margin: 15px 0 0;
+  text-align: left;
+}
+
+/* ----------- End Press Kit page css----------- */
 /* ----------- Not Found page css----------- */
 #notfound .notfound-inner {
   background: #ffffff;
@@ -13800,6 +13915,56 @@ button:focus {
 }
 
 /* ----------- End Not Found page css----------- */
+/* ----------- Coming Soon page css----------- */
+.coming-soon {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.coming-soon .coming-soon-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -ms-flex-pack: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
+  min-height: 100vh;
+}
+
+.coming-soon .coming-soon-inner h1 {
+  font-size: 220px;
+  color: #f26a11;
+  -webkit-text-shadow: 0 2px 18px rgba(0, 0, 0, 0.56);
+  -moz-text-shadow: 0 2px 18px rgba(0, 0, 0, 0.56);
+  -ms-text-shadow: 0 2px 18px rgba(0, 0, 0, 0.56);
+  -o-text-shadow: 0 2px 18px rgba(0, 0, 0, 0.56);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.56);
+}
+
+.coming-soon .coming-soon-inner a {
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  -ms-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  -o-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  font-family: "proxima_novabold";
+  font-size: 24px;
+  padding: 10px 35px;
+  margin-top: 20px;
+}
+
+/* ----------- End Coming Soon page css----------- */
 /* ----------- Footer css----------- */
 footer {
   padding: 80px 0;
@@ -13918,14 +14083,15 @@ footer .term-condition ul li a {
   font-size: 14px;
 }
 
+/* ----------- End Footer css----------- */
 .fade-enter {
   opacity: 0.01;
 }
 
 .fade-enter.fade-enter-active {
   opacity: 1;
-  -webkit-transition: opacity 500ms ease-in;
-  transition: opacity 500ms ease-in;
+  -webkit-transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
 }
 
 .fade-leave {
@@ -13934,11 +14100,126 @@ footer .term-condition ul li a {
 
 .fade-leave.fade-leave-active {
   opacity: 0.01;
-  -webkit-transition: opacity 300ms ease-in;
-  transition: opacity 300ms ease-in;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
 
-/* ----------- End Footer css----------- */
+.jarallax {
+  position: relative;
+  z-index: 0;
+}
+
+span[data-jarallax-element] {
+  display: inline-block;
+}
+
+/*Custom scroll Bar*/
+/*End Custom scroll Bar*/
+/*Alert Popup  Css*/
+.swal2-container .swal2-popup {
+  border-radius: 14px;
+  position: relative;
+  background: #fcfcfc;
+  padding: 40px 20px;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3) !important;
+  -ms-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3) !important;
+  -o-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+.swal2-container .swal2-title {
+  color: #221f1f !important;
+}
+
+.swal2-container .swal2-confirm {
+  font-size: 24px !important;
+  font-family: "proxima_novabold";
+  color: #221f1f !important;
+  margin-top: 20px;
+  display: inline-block;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  line-height: 30px;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5) !important;
+  -ms-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5) !important;
+  -o-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 15px !important;
+  background: #ffffff !important;
+}
+
+.swal2-container .swal2-confirm:hover, .swal2-container .swal2-confirm:focus {
+  color: #f26a11 !important;
+  background-image: none !important;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  -webkit-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5) !important;
+  -ms-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5) !important;
+  -o-box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5) !important;
+}
+
+.swal2-container .swal2-content {
+  font-family: "proxima_novaregular";
+  font-size: 25px;
+  color: #221f1f !important;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.swal2-container .swal2-icon.swal2-success {
+  border-color: #2c8b35 !important;
+  border: 2px solid;
+}
+
+.swal2-container .swal2-icon.swal2-success .swal2-success-line-tip {
+  border-color: #2c8b35 !important;
+  border: 2px solid;
+  background: #2c8b35 !important;
+}
+
+.swal2-container .swal2-icon.swal2-success .swal2-success-line-long {
+  border-color: #2c8b35 !important;
+  border: 2px solid;
+  background: #2c8b35 !important;
+}
+
+.swal2-container .swal2-icon.swal2-success .swal2-success-circular-line-left {
+  background: none !important;
+}
+
+.swal2-container .swal2-icon.swal2-success .swal2-success-circular-line-right {
+  background: none !important;
+}
+
+.swal2-container .swal2-icon.swal2-success .swal2-success-fix {
+  background: none !important;
+}
+
+.swal2-container .swal2-icon.swal2-success .swal2-success-ring {
+  border: none !important;
+}
+
+/*End Alert Popup  Css*/
+/*Fade In Animation*/
+@-webkit-keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*End Fade In Animation*/
 /* ----------- Suppoted Maximum mobile, Tablet and Desktop ----------- */
 @media (min-width: 1601px) and (max-width: 1800px) {
   /*Common css for whole site*/
@@ -14211,6 +14492,12 @@ footer .term-condition ul li a {
     line-height: 30px;
   }
   /*----------------------------------End Conatct Page Css-------------------------*/
+  /*----------------------------------About Page Css-------------------------*/
+  .about .about-intro .about-intro-inner .content-block h2 {
+    font-size: 60px;
+    line-height: 70px;
+  }
+  /*----------------------------------End About Page Css-------------------------*/
   /*footer css*/
   footer {
     padding: 60px 0;
@@ -14399,6 +14686,12 @@ footer .term-condition ul li a {
     line-height: 30px;
   }
   /*----------------------------------End Conatct Page Css-------------------------*/
+  /*----------------------------------About Page Css-------------------------*/
+  .about .about-intro .about-intro-inner .content-block h2 {
+    font-size: 60px;
+    line-height: 70px;
+  }
+  /*----------------------------------End About Page Css-------------------------*/
   /*footer css*/
   footer .newsletter .input-group-text {
     padding: 0 15px;
@@ -14687,6 +14980,63 @@ footer .term-condition ul li a {
     margin-bottom: 60px;
   }
   /*----------------------End Contact Page Css-----------------------------*/
+  /*----------------------About Page Css-----------------------------*/
+  .about .about-intro {
+    padding-bottom: 0;
+  }
+  .about .about-intro .about-intro-inner {
+    display: block;
+  }
+  .about .about-intro .about-intro-inner .content-block h2 {
+    font-size: 60px;
+    margin-bottom: 40px;
+    line-height: 70px;
+  }
+  .about .about-intro .about-intro-inner .content-block p {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .about .about-intro .about-intro-inner .image-block {
+    margin-top: 40px;
+    float: none !important;
+    text-align: center;
+  }
+  .about .about-description .content-right h4 {
+    font-size: 24px;
+    line-height: 35px;
+  }
+  .about .about-slider {
+    padding: 0 0 80px 0;
+  }
+  .about .about-sidebar-menu {
+    padding-bottom: 0;
+  }
+  .about .about-sidebar-menu .left-sidebar {
+    margin-bottom: 30px;
+  }
+  .about .about-sidebar-menu .left-sidebar a.nav-link {
+    font-size: 30px;
+  }
+  .about .about-process .pl-0 {
+    padding-left: 15px !important;
+  }
+  .about .about-process .pr-0 {
+    padding-right: 15px !important;
+  }
+  .about .about-process .content-block {
+    display: block;
+    padding: 0;
+  }
+  .about .about-process .content-block h3 {
+    margin-top: 20px;
+  }
+  .about .about-process .content-block p {
+    margin: 20px 0 20px 0;
+  }
+  .about .team .team-item {
+    margin: 20px 0;
+  }
+  /*----------------------End About Page Css-----------------------------*/
   /*footer css*/
   footer {
     padding: 60px 0;
@@ -14699,6 +15049,12 @@ footer .term-condition ul li a {
 
 @media (min-width: 481px) and (max-width: 767px) {
   /*Common css for whole site*/
+  .hero-bg-left {
+    display: none;
+  }
+  .hero-bg-right {
+    display: none;
+  }
   section {
     padding: 40px 0;
   }
@@ -15091,6 +15447,87 @@ footer .term-condition ul li a {
     margin-bottom: 80px;
   }
   /*----------------------End Contact Page Css-----------------------------*/
+  /*----------------------About Page Css-----------------------------*/
+  .about .about-intro .about-intro-inner {
+    display: block;
+  }
+  .about .about-intro .about-intro-inner .content-block h2 {
+    font-size: 35px;
+    margin-bottom: 40px;
+    line-height: 45px;
+  }
+  .about .about-intro .about-intro-inner .content-block p {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .about .about-intro .about-intro-inner .image-block {
+    margin-top: 20px;
+  }
+  .about .about-description .content-right h4 {
+    font-size: 24px;
+    line-height: 35px;
+  }
+  .about .about-slider {
+    padding: 0 0 80px 0;
+  }
+  .about .about-slider .slick-slider .image {
+    padding: 0 40px 0;
+  }
+  .about .about-slider .slick-slider .slick-active.slick-current img {
+    -webkit-transform: scale(1);
+    -moz-transition: scale(1);
+    -ms-transform: scale(1);
+    -o-transition: scale(1);
+    transform: scale(1);
+  }
+  .about .about-sidebar-menu {
+    padding-bottom: 0;
+  }
+  .about .about-sidebar-menu .left-sidebar {
+    margin-bottom: 30px;
+  }
+  .about .about-sidebar-menu .left-sidebar a.nav-link {
+    font-size: 30px;
+  }
+  .about .about-process .pl-0 {
+    padding-left: 15px !important;
+  }
+  .about .about-process .pr-0 {
+    padding-right: 15px !important;
+  }
+  .about .about-process .content-block {
+    display: block;
+    padding: 0;
+  }
+  .about .about-process .content-block h3 {
+    margin-top: 20px;
+  }
+  .about .about-process .content-block p {
+    margin: 20px 0 20px 0;
+  }
+  .about .team .team-item {
+    margin: 20px 0;
+  }
+  /*----------------------End About Page Css-----------------------------*/
+  /* ----------- Press Kit page css----------- */
+  .press-kit .section-title h2 {
+    font-size: 35px;
+    line-height: 45px;
+  }
+  .press-kit .section-title p {
+    font-size: 20px;
+  }
+  .press-kit .our-logo .company-logo-items {
+    margin: 25px 0;
+  }
+  .press-kit .our-logo .cus-btn {
+    margin-top: 20px;
+    display: inline-block;
+  }
+  .press-kit .company-logo .company-logo-items {
+    margin: 25px 0;
+  }
+  /* ----------- End Press Kit page css----------- */
   /*----------------------Not Found Page Css-----------------------------*/
   #notfound .notfound-inner h1 {
     font-size: 130px;
@@ -15598,12 +16035,27 @@ footer .term-condition ul li a {
     font-size: 24px;
     line-height: 35px;
   }
+  .about .about-slider {
+    padding: 0 0 80px 0;
+  }
+  .about .about-slider .slick-slider .image {
+    padding: 0 40px 0;
+  }
   .about .about-slider .slick-slider .slick-active.slick-current img {
     -webkit-transform: scale(1);
     -moz-transition: scale(1);
     -ms-transform: scale(1);
     -o-transition: scale(1);
     transform: scale(1);
+  }
+  .about .about-sidebar-menu {
+    padding-bottom: 0;
+  }
+  .about .about-sidebar-menu .left-sidebar {
+    margin-bottom: 30px;
+  }
+  .about .about-sidebar-menu .left-sidebar a.nav-link {
+    font-size: 30px;
   }
   .about .about-process .pl-0 {
     padding-left: 15px !important;
@@ -15625,6 +16077,25 @@ footer .term-condition ul li a {
     margin: 20px 0;
   }
   /*----------------------End About Page Css-----------------------------*/
+  /* ----------- Press Kit page css----------- */
+  .press-kit .section-title h2 {
+    font-size: 35px;
+    line-height: 45px;
+  }
+  .press-kit .section-title p {
+    font-size: 20px;
+  }
+  .press-kit .our-logo .company-logo-items {
+    margin: 25px 0;
+  }
+  .press-kit .our-logo .cus-btn {
+    margin-top: 20px;
+    display: inline-block;
+  }
+  .press-kit .company-logo .company-logo-items {
+    margin: 25px 0;
+  }
+  /* ----------- End Press Kit page css----------- */
   /*----------------------Not Found Page Css-----------------------------*/
   #notfound .notfound-inner h1 {
     font-size: 130px;

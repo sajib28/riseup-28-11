@@ -55,42 +55,36 @@ const get_work_items = work_items.map((single_item, i) => {
         <div className="swap-items" key={i}>
             <div className="col-lg-6">
                 <div className="image-block wow fadeIn" animation-delay="1s" data-wow-delay="0.4s">
-                <img src={single_item.item_img} alt={single_item.alt_img} />
+                    <img src={single_item.item_img} alt={single_item.alt_img} />
                 </div>
             </div>
             <div className="col-lg-6">
-
                 <div className="content-block">
-                        <span className="counter-post wow fadeInUp" animation-delay="1.5s" data-wow-delay="0.4s">— {single_item.number} / {total_work_items}</span>
-                   
-                   
-                        <h2 className="wow fadeInUp" animation-delay="1.5s" data-wow-delay="0.4s">{single_item.title}</h2>
-                  
-                    
-                        <p className="wow fadeInUp" animation-delay="2s" data-wow-delay="0.4s">{single_item.description}</p>
-                    
+                    <span className="counter-post wow fadeInUp" animation-delay="1.5s" data-wow-delay="0.4s">— {single_item.number} / {total_work_items}</span>
+                    <h2 className="wow fadeInUp" animation-delay="2s" data-wow-delay="0.4s">{single_item.title}</h2>
+                    <p className="wow fadeInUp" animation-delay="2.5s" data-wow-delay="0.4s">{single_item.description}</p>
                 </div>
-
             </div>
+            <div className="curbe wow fadeIn" animation-delay="0.6s" data-wow-delay="0.6s"></div>
         </div>
     )
 })
 
 // Process Banner Data
 const banner_data = {
-    banner_img: require('../../../assets/img/process-banner.png'),
+    banner_img: require('../../../assets/img/banner/process-banner.png'),
     title1: "How We Work:",
     title2: "From Idea to Reality"
 }
 class Press extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
-         // Activated WoW Js
-         new WOW.WOW({
+        // Activated WoW Js
+        new WOW.WOW({
             live: true,
             mobile: false,
-            offset:0,
-          }).init();
+            offset: 0,
+        }).init();
         // End Activated WoW Js
         $(".swap-items:odd").addClass('reverse-items');
     }
@@ -104,9 +98,9 @@ class Press extends Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="introText">
-                                    
-                                        <h1 className="wow fadeInUp" animation-delay="1.5s" data-wow-delay="0.4s"><span className="text-color">{banner_data.title1}</span><br />{banner_data.title2}</h1>
-                                   
+
+                                    <h1 className="wow fadeInUp" animation-delay="1.5s" data-wow-delay="0.4s"><span className="text-color">{banner_data.title1}</span><br />{banner_data.title2}</h1>
+
                                 </div>
                             </div>
                         </div>

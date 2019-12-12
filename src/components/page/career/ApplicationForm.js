@@ -3,6 +3,7 @@ import Nav from '../../commonTools/Nav';
 import Footer from '../../commonTools/Footer';
 // import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
+import WOW from 'wowjs';
 import $ from 'jquery';
 // import Accordion from '../../commonTools/Accordion';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,6 +11,13 @@ import $ from 'jquery';
 class ApplicationForm extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
+
+        // Activated WoW Js
+        new WOW.WOW({
+            live: true,
+            mobile: false,
+        }).init();
+        // End Activated WoW Js
     }
     
     constructor(props) {
@@ -194,11 +202,10 @@ class ApplicationForm extends Component {
             })
         }
     }
-
     render() {
         let $cvPreview = '';
         if (this.state.cvPreviewUrl) {
-           $cvPreview = (<div className="image-container" ><a href={this.state.cvPreviewUrl}>Click link to view file</a></div>);
+           $cvPreview = (<div className="image-container" ><a href={this.state.cvPreviewUrl}>Click here to view file</a></div>);
           }
           else{
             $cvPreview = '';
@@ -212,7 +219,7 @@ class ApplicationForm extends Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="introText">
-                                    <h1><span className="text-color">Game </span>Artist</h1>
+                                <h1 className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s"><span className="text-color">Game </span>Artist</h1>
                                 </div>
                             </div>
                         </div>

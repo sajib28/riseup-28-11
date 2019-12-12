@@ -3,9 +3,17 @@ import Nav from '../../commonTools/Nav';
 import Footer from '../../commonTools/Footer';
 // import Banner from '../../commonTools/Banner';
 // import BackgroundImage from '../../../assets/img/event.jpg';
+import { Link } from "react-router-dom";
+import WOW from 'wowjs';
 class Career extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
+        // Activated WoW Js
+        new WOW.WOW({
+            live: true,
+            mobile: false,
+        }).init();
+        // End Activated WoW Js
     }
     
     render() {
@@ -18,7 +26,7 @@ class Career extends Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="introText">
-                                    <h1><span className="text-color">We’re </span>hiring.</h1>
+                                    <h1 className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s"><span className="text-color">We’re </span>hiring.</h1>
                                 </div>
                             </div>
                         </div>
@@ -29,7 +37,7 @@ class Career extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12 text-center">
-                                <h2 className="title proxima-semibold">Currently Open Positions</h2>
+                                <h2 className="title proxima-semibold wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s">Currently Open Positions</h2>
                             </div>
                         </div>
                     </div>
@@ -89,7 +97,7 @@ class Career extends Component {
                                                     <h3>Job Location</h3>
                                                     <p>Dhaka</p>
                                                 </div>
-                                                <a className="cus-btn" href="/application-form"><span className="text-color">Apply</span> for this position</a>
+                                                <Link className="cus-btn" to={`${process.env.PUBLIC_URL}/application-form`}><span className="text-color">Apply</span> for this position</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +152,7 @@ class Career extends Component {
                                                     <h3>Job Location</h3>
                                                     <p>Dhaka</p>
                                                 </div>
-                                                <a className="cus-btn" href="/application-form"><span className="text-color">Apply</span> for this position</a>
+                                                <Link className="cus-btn" to={`${process.env.PUBLIC_URL}/application-form`}><span className="text-color">Apply</span> for this position</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -198,7 +206,7 @@ class Career extends Component {
                                                     <h3>Job Location</h3>
                                                     <p>Dhaka</p>
                                                 </div>
-                                                <a className="cus-btn" href="/application-form"><span className="text-color">Apply</span> for this position</a>
+                                                <Link className="cus-btn" to={`${process.env.PUBLIC_URL}/application-form`}><span className="text-color">Apply</span> for this position</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -252,7 +260,7 @@ class Career extends Component {
                                                     <h3>Job Location</h3>
                                                     <p>Dhaka</p>
                                                 </div>
-                                                <a className="cus-btn" href="/application-form"><span className="text-color">Apply</span> for this position</a>
+                                                <Link className="cus-btn" to={`${process.env.PUBLIC_URL}/application-form`}><span className="text-color">Apply</span> for this position</Link>
                                             </div>
                                         </div>
                                     </div>

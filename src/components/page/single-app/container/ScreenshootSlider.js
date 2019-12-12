@@ -33,10 +33,10 @@ class ScreenshootSlider extends Component {
                 $(this).append('<div class="slick-counter"><span class="current"></span> / <span class="total"></span></div>');
                 $('.current').text(slick.currentSlide + 1);
                 $('.total').text(slick.slideCount);
-            })
-                .slick({
+            }).not('.slick-initialized').slick({
                     infinite: true,
                     slidesToShow: 2,
+                    slidesToScroll: 2,
                     swipeToSlide: true,
                     speed: 500,
                     responsive: [

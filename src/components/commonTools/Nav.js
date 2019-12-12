@@ -4,14 +4,21 @@ import {
   NavLink
 } from "react-router-dom";
 import $ from 'jquery';
+import SocialMedia from './container/SocialMedia';
 import riseuplogo from '../../assets/img/riseup-logo.png';
-import logo from '../../assets/img/logo.png';
+import logo from '../../assets/img/big-logo.png';
 import menubar from '../../assets/img/bars.png';
 import menuClose from '../../assets/img/close.png';
-
-
+import WOW from 'wowjs';
 class Nav extends Component {
+
   componentDidMount() {
+     // Activated WoW Js
+     new WOW.WOW({
+      live: true,
+      mobile: false,
+  }).init();
+  // End Activated WoW Js
     $(window).scroll(function () {
       headerFixed();
       function headerFixed() {
@@ -39,23 +46,26 @@ class Nav extends Component {
       });
       //dropdown menu
       $('.fullscreen-menu .navbar-nav li').click(function () {
-        if(!$(this).hasClass('dropdown')){
+        if (!$(this).hasClass('dropdown')) {
           $('#fullscreenMenu').modal('hide');
         }
       })
-     
-
-      $('#fullscreenMenu').scroll(function () {
-
-        // close button fixed
-        let fullscreenMenu = document.getElementById("fullscreenMenu");
-        if ($(fullscreenMenu).scrollTop() > 0) {
-          fullscreenMenu.classList.add("fixedCloseBtn");
-        } else {
-          fullscreenMenu.classList.remove("fixedCloseBtn");
+      $('.company-logo a').click(function () {
+        if (!$(this).hasClass('dropdown')) {
+          $('#fullscreenMenu').modal('hide');
         }
-        //End  Close button fixed
-      });
+      })
+      // $('#fullscreenMenu').scroll(function () {
+
+      //   // close button fixed
+      //   let fullscreenMenu = document.getElementById("fullscreenMenu");
+      //   if ($(fullscreenMenu).scrollTop() > 0) {
+      //     fullscreenMenu.classList.add("fixedCloseBtn");
+      //   } else {
+      //     fullscreenMenu.classList.remove("fixedCloseBtn");
+      //   }
+      //   //End  Close button fixed
+      // });
     });
 
   }
@@ -83,7 +93,7 @@ class Nav extends Component {
                   <NavLink activeClassName='active' className="nav-link" to={`${process.env.PUBLIC_URL}/about`}>About Us</NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="http://www.riseuplabs.com/blog/">Blog</a>
+                  <a rel="noopener noreferrer" className="nav-link" href="http://www.riseuplabs.com/blog/">Blog</a>
                 </li>
 
                 <li className="nav-item">
@@ -92,7 +102,7 @@ class Nav extends Component {
               </ul>
             </div>
             <div className="topMenuIcon">
-              <Link className="nav-link openMenu" to="/" data-toggle="modal" data-target="#fullscreenMenu"><img src={menubar} alt="" /></Link>
+              <Link className="nav-link openMenu" to={`${process.env.PUBLIC_URL}/`} data-toggle="modal" data-target="#fullscreenMenu"><img src={menubar} alt="" /></Link>
             </div>
           </div>
         </nav>
@@ -121,19 +131,19 @@ class Nav extends Component {
                             <Link to="/" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services <i className="fas fa-chevron-down"></i></Link>
                             <ul className="dropdown-menu">
                               <li className="nav-item">
-                                <NavLink activeClassName="active" className="nav-link" to="/apps-development">Apps Development</NavLink>
+                                <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/apps-development`}>Apps Development</NavLink>
                               </li>
                               <li className="nav-item">
-                                <NavLink activeClassName="active" className="nav-link" to="/coming-soon">Game Development</NavLink>
+                                <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/game-development`}>Game Development</NavLink>
                               </li>
                               <li className="nav-item">
-                                <NavLink activeClassName="active" className="nav-link" to="/coming-soon">Web System</NavLink>
+                                <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/web-system`}>Web System</NavLink>
                               </li>
                               <li className="nav-item">
-                                <NavLink activeClassName="active" className="nav-link" to="/coming-soon">XR Solution</NavLink>
+                                <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/xr-solution`}>XR Solution</NavLink>
                               </li>
                               <li className="nav-item">
-                                <NavLink activeClassName="active" className="nav-link" to="/iets">Iets</NavLink>
+                                <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/ites`}>ITES</NavLink>
                               </li>
                             </ul>
                           </li>
@@ -147,30 +157,32 @@ class Nav extends Component {
                           <li className="nav-item">
                             <NavLink activeClassName="active" className="nav-link" to="/about">About Us</NavLink>
                           </li>
-                          <li className="nav-item">
+                          {/* <li className="nav-item">
                             <NavLink activeClassName="active" className="nav-link" to="/coming-soon">Our clients</NavLink>
-                          </li>
+                          </li> */}
                           <li className="nav-item">
                             <Link className="nav-link" to="http://www.riseuplabs.com/blog/">Blog</Link>
                           </li>
                           <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/career">Career</NavLink>
+                            <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/career`}>Career</NavLink>
                           </li>
                           <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/coming-soon">Press Kit</NavLink>
+                            <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/press-kit`}>Press Kit</NavLink>
                           </li>
                           <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/contact">Contact</NavLink>
+                            <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/contact`}>Contact</NavLink>
                           </li>
                           <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/coming-soon">Apps</NavLink>
+                            <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/coming-soon`}>Apps</NavLink>
                           </li>
                         </ul>
                       </div>
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-6">
                       <div className="company-info">
-                        <img src={logo} alt="" />
+                        <div className="company-logo">
+                          <Link to={`${process.env.PUBLIC_URL}/`}><img src={logo} alt="Rise Up Labs" /></Link>
+                        </div>
                         <div className="contact-info">
                           <li><a href="mailto:contact@riseuplabs.com">contact@riseuplabs.com</a></li>
                           <li><a href="tel:01759747387">+88-0175-974-7387</a></li>
@@ -179,14 +191,7 @@ class Nav extends Component {
                           <p>Head Office:B6,<br />Plot-35,Sonargaon<br />Janapath Road,Sector-07,<br />Uttara, Dhaka-1230,<br />Bangladesh</p>
                         </div>
                         <div className="social-media">
-                          <ul className="list-unstyled list-inline">
-                            <li><a href="/"><i className="fab fa-facebook-f"></i></a></li>
-                            <li><a href="/"><i className="fab fa-twitter"></i></a></li>
-                            <li><a href="/"><i className="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="/"><i className="fas fa-meh-blank"></i></a></li>
-                            <li><a href="/"><i className="fab fa-youtube"></i></a></li>
-
-                          </ul>
+                          <SocialMedia/>
                         </div>
                       </div>
                     </div>

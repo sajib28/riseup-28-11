@@ -177,36 +177,36 @@ class ContactUs extends Component {
             <form id="ContactForm" onSubmit={this.handleSubmit}>
                 <div className="row">
                     <div className="col-lg-6">
-                        <div className="form-group">
+                        <div className="form-group wow fadeInUp" animation-delay="0.3s" data-wow-delay="0.3s">
                             <input type="text" name="names" className={`form-control ${this.state.nameError ? 'is-invalid' : ''}`} id="name" placeholder="Your Name" value={this.state.name} onChange={this.handleNameChange} onBlur={this.validateName} />
                             <div className='invalid-feedback'>{this.state.nameError}</div>
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <div className="form-group">
+                        <div className="form-group wow fadeInUp" animation-delay="0.3s" data-wow-delay="0.3s">
                             <input type="email" name="email" className={`form-control ${this.state.emailError ? 'is-invalid' : ''}`} id="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} onBlur={this.validateEmail} />
                             <div className='invalid-feedback'>{this.state.emailError}</div>
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <div className="form-group">
+                        <div className="form-group wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">
                             <input type="text" name="phone" className={`form-control ${this.state.phoneError ? 'is-invalid' : ''}`} id="phone" placeholder="Phone Number" value={this.state.phone} onChange={this.handlephoneChange} onBlur={this.validatephone} />
                             <div className='invalid-feedback'>{this.state.phoneError}</div>
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <div className="form-group">
+                        <div className="form-group wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">
                             <input type="text" name="company" className="form-control" id="companyName" placeholder="Company (Optional)" value={this.state.company} />
                         </div>
                     </div>
                     <div className="col-lg-12">
-                        <div className="form-group">
+                        <div className="form-group wow fadeInUp" animation-delay="0.5s" data-wow-delay="0.5s">
                             <textarea className={`form-control ${this.state.messageError ? 'is-invalid' : ''}`} name="contactmessage" id="contactmessage" placeholder="Message" value={this.state.contactmessage} onChange={this.handlecontactmessagee} onBlur={this.validatecontactmessage}></textarea>
                             <div className='invalid-feedback'>{this.state.messageError}</div>
                         </div>
                     </div>
                     <div className="col-lg-12">
-                        <div className="form-group float-right">
+                        <div className="form-group float-right wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s">
                             <button type="submit" className="cus-btn"><span className="text-color">Send</span> Message</button>
                         </div>
                     </div>
