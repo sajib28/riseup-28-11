@@ -11,7 +11,7 @@ const about_slider = [
     },
     {
         about_img: require('../../../../assets/img/about-slider/about-slide-1.jpg'),
-        alt_img: 'demo3'
+        alt_img: 'Rise Up Labs, iOS and Android Mobile Game Developer'
     },
     {
         about_img: require('../../../../assets/img/about-slider/about-slide-3.jpg'),
@@ -47,7 +47,7 @@ class AboutSlider extends Component {
                     }
                 },
                 {
-                    breakpoint: 600,
+                    breakpoint: 767,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,

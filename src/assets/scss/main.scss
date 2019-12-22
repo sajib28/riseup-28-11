@@ -1,21 +1,22 @@
-@import "../../../node_modules/bootstrap/scss/bootstrap";
 /* ----------- All Variable ----------- */
 @import "./variable.scss";
 /* ----------- End  All Variable ----------- */
 /* ----------- Supported All Cross browsers mixins ----------- */
 @import "./mixin.scss";
 /* ----------- End  Supported All Cross browsers mixins ----------- */
-/* ----------- Suppoted Maximum mobile, Tablet and Desktop ----------- */
-// @import './responsive.scss';
-
-/* ----------- End Suppoted Maximum mobile, Tablet and Desktop ----------- */
 /* ----------- Common css----------- */
-
 body {
   margin: 0;
   padding: 0;
   background: #fcfcfc;
   font-family: $proximaRegular;
+}
+::-moz-selection {
+  /* Code for Firefox */
+  background: $yellow;
+}
+::selection {
+  background: $yellow;
 }
 h1,
 h2,
@@ -56,6 +57,13 @@ p {
 a {
   font-family: $proximaRegular;
   font-size: 18px;
+  color: $black;
+  @include transition(all 0.3s linear);
+  &:hover,
+  &:focus {
+    color: $yellow;
+    @include transition(all 0.3s linear);
+  }
 }
 .button {
   @include box-shadow(0, 8px, 18px, rgba($black, 0.3));
@@ -268,16 +276,21 @@ button {
   top: 0;
   width: 100%;
   right: 0;
-  padding: 35px 0;
+  padding: 0;
+  height: 120px;
   z-index: 999;
   opacity: 1;
   @include transition(all 0.3s linear);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 
   &.sticky-header {
     position: fixed;
-    padding: 0;
+    height: 95px;
     background: $black-grey;
     @include transition(all 0.3s linear);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   .navbar-brand {
     color: $white;
@@ -329,10 +342,18 @@ button {
       padding: 0;
     }
   }
+  .container {
+    @include transform(translateX(0));
+    @include transition(all 0.5s linear);
+  }
 }
 .modal-open {
   #mainMenu {
-    @include transition(all 0.4s cubic-bezier(0.72, 0.16, 0.345, 0.875) 0s);
+    @include transition(all 1s cubic-bezier(0.72, 0.16, 0.345, 0.875) 0s);
+    .container {
+      @include transform(translateX(-17px));
+      @include transition(all 0.5s linear);
+    }
   }
 }
 .banner {
@@ -349,9 +370,7 @@ button {
     background-size: cover;
     // background-attachment: fixed;
   }
-  &:before {
-    content: "";
-    background: rgba(0, 0, 0, 0.3);
+  .overlay-with-shadow {
     top: 0;
     bottom: 0;
     left: 0;
@@ -669,7 +688,8 @@ button {
             color: $white;
             font-size: 26px;
             font-weight: bold;
-            &:hover {
+            &:hover,
+            &:focus {
               @include transition(all 0.3s linear);
               color: $yellow;
             }
@@ -696,6 +716,18 @@ button {
         }
         .dropdown-menu {
           background: none;
+          // @include transition(all 0.3s ease-in-out);
+
+          li {
+            a {
+              font-size: 22px;
+              padding: 6px 0;
+            }
+          }
+
+          &.show {
+            // @include transition(all 0.3s ease-in-out);
+          }
         }
       }
 
@@ -839,6 +871,9 @@ button {
   display: none;
   .slick-slide {
     position: relative;
+    img {
+      height: 100vh;
+    }
     .introText {
       position: absolute;
       top: 50%;
@@ -876,6 +911,12 @@ button {
     overflow: hidden;
     object-fit: cover;
     object-position: center;
+  }
+  @supports (-ms-ime-align: auto) {
+    .video,
+    .background-cover {
+      height: auto !important;
+    }
   }
 
   .middle-content {
@@ -999,47 +1040,61 @@ button {
 .service-block {
   padding: 40px 0;
   position: relative;
-  // .demo-title{
-  //   .rellax{
-  //     position: relative;
-  //     z-index: 99;
-  //     top:50px;
-  //   }
-  // }
-  h2 {
-    font-size: 80px;
-    line-height: 88px;
-    font-family: $rawlineExtraBold;
-    // position: relative;
-    // z-index: 9;
-    // left: 50px;
-    // top: -60px;
+  .first-letter-wrapper {
+    position: absolute;
+    top: 50%;
+    right: auto;
+    left: 0;
+    z-index:-999;
+    @include transform(translateY(-50%));
+    .parallax-outer {
+      position: relative;
+      z-index: 99;
+      will-change: transform;
+      .first-letter {
+        color: #cfcfcf;
+        font-size: 1000px;
+        font-family: $proximaBold;
+        opacity: 0.1;
+        line-height: 1000px;
+      }
+    }
   }
-  .parallax-outer {
-    position: relative;
-    z-index: 99;
-    left: 50px;
-    top: 50px;
-    will-change: transform;
+  .title {
+    .parallax-outer {
+      position: relative;
+      z-index: 99;
+      left: 50px;
+      top: 40px;
+      will-change: transform;
+    }
+    h2 {
+      font-size: 64px;
+      line-height: 88px;
+      font-family: $rawlineExtraBold;
+    }
   }
-  figure {
+
+  .img-box {
     img {
       width: 100%;
     }
   }
   .apps-wrapper {
     max-width: 1050px;
-    margin: 0 auto;
+    margin: -40px auto 0;
     display: block;
     position: relative;
 
     .apps-content {
       .apps-details {
         position: relative;
+        top: -30px;
+        z-index: 9;
+        will-change: transform;
       }
       .apps-description {
         padding: 30px 80px;
-
         .see-more {
           margin-top: 30px;
           display: inline-block;
@@ -1057,19 +1112,15 @@ button {
         p {
           font-size: 20px;
           line-height: 30px;
-          text-align: justify;
         }
       }
       ul {
         @include box-shadow(4px, 20px, 54px, rgba($black, 0.16));
         padding: 30px;
-        position: absolute;
-        top: -60px;
-        z-index: 9;
-        left: 80px;
+        position: relative;
         right: auto;
+        left: 80px;
         background: $white;
-        width: 284px;
         li {
           padding: 15px 0;
           border-bottom: 0.2px solid #e1e1e1;
@@ -1097,10 +1148,11 @@ button {
     .swap-apps {
       flex-direction: row-reverse;
     }
-    .first-letter {
+    .first-letter-wrapper {
       right: 0;
       left: auto;
     }
+
     .apps-content {
       ul {
         right: 80px;
@@ -1115,7 +1167,10 @@ button {
   }
 }
 #riseupApps {
-  figure {
+  .first-letter-wrapper {
+    top: 65%;
+  }
+  .img-box {
     position: relative;
     img {
       @include box-shadow(0, 20px, 60px, rgba($red, 0.25));
@@ -1131,7 +1186,10 @@ button {
   }
 }
 #riseupGames {
-  figure {
+  .first-letter {
+    top: 80%;
+  }
+  .img-box {
     position: relative;
     img {
       @include box-shadow(0, 20px, 60px, rgba(#0007ce, 0.25));
@@ -1147,7 +1205,10 @@ button {
   }
 }
 #riseupWeb {
-  figure {
+  .first-letter {
+    top: 80%;
+  }
+  .img-box {
     position: relative;
     img {
       @include box-shadow(0, 20px, 60px, rgba(#00adb9, 0.25));
@@ -1163,7 +1224,10 @@ button {
   }
 }
 #riseupXr {
-  figure {
+  .first-letter {
+    top: 65%;
+  }
+  .img-box {
     position: relative;
     img {
       @include box-shadow(0, 20px, 60px, rgba(#208b00, 0.25));
@@ -1178,8 +1242,11 @@ button {
     }
   }
 }
-#riseupIets {
-  figure {
+#riseupItes {
+  .first-letter {
+    top: 65%;
+  }
+  .img-box {
     position: relative;
     img {
       @include box-shadow(0, 20px, 60px, rgba(#9a8f00, 0.25));
@@ -1316,6 +1383,7 @@ button {
       font-family: $proximaRegular;
       font-size: 20px;
       color: $white-grey;
+      background: transparent;
 
       &:focus {
         outline: 0;
@@ -1421,6 +1489,7 @@ button {
     .accordion {
       .card {
         border-bottom: 1px solid #e1e1e1;
+        background: transparent;
         &:first-child {
           border-top: 1px solid #e1e1e1;
         }
@@ -1478,7 +1547,7 @@ button {
             margin-top: 20px;
             display: inline-block;
             line-height: 30px;
-            margin-left: -30px;
+            margin-left: -20px;
             @include box-shadow(0, 8px, 18px, rgba($black, 0.3));
             @include border-radius(15px);
           }
@@ -1578,6 +1647,14 @@ button {
           position: absolute;
           left: 150px;
           top: 44px;
+        }
+        img {
+          max-height: 300px;
+          animation-name: zoomIn;
+          animation-iteration-count: 1;
+          animation-timing-function: linear;
+          animation-duration: 0.5s;
+          @include transition(all 0.5s linear);
         }
       }
       &.file-upload {
@@ -1970,7 +2047,7 @@ button {
     position: absolute;
     top: -50px;
     right: -200px;
-    z-index: 9;
+    z-index: 12;
     width: 284px;
     .list-box-inner {
       background: #fff;
@@ -2025,11 +2102,11 @@ button {
         &.show-top {
           z-index: 10;
           opacity: 1;
-          animation-name: pulse;
+          animation-name: zoomIn;
           animation-iteration-count: 1;
           animation-timing-function: linear;
-          animation-duration: 1.5s;
-          @include transition(all 1s linear);
+          animation-duration: 0.5s;
+          @include transition(all 0.5s linear);
         }
       }
       .top-img {
@@ -2177,6 +2254,7 @@ button {
       max-width: 100%;
       margin: 0;
       box-shadow: none;
+      background: transparent;
     }
   }
   .working-brand {
@@ -2202,17 +2280,6 @@ button {
       @include linear-gradient(-30deg, rgba(#fae8e8, 0.1), rgba(#ce0000, 0.6));
       @include box-shadow(0, 20px, 60px, rgba($red, 0.2));
     }
-    // .introText {
-    //   min-height: 570px;
-    //   @include flexbox();
-    //   @include justify-content(left);
-    //   @include align-items(flex-end);
-    //   h1 {
-    //     font-size: 82px;
-    //     font-family: $rawlineExtraBold;
-    //     @include text-shadow(0, 3px, 14px, rgba($black, 0.22));
-    //   }
-    // }
   }
   .project {
     background: $white-light;
@@ -2235,12 +2302,6 @@ button {
 /* -----------  End Apps details page css----------- */
 /* -----------  Single App page css----------- */
 .single-app {
-  .banner {
-    // &:before {
-    //   background: none;
-    //   @include box-shadow(0, 20px, 60px, rgba(#f7ff00, 0.2));
-    // }
-  }
   .short-info {
     border-bottom: 1px solid rgba($black-grey, 0.2);
     h2 {
@@ -2278,8 +2339,6 @@ button {
           margin: 10px 50px;
           &:first-child {
             margin-left: 0;
-          }
-          a {
           }
         }
       }
@@ -2556,31 +2615,6 @@ button {
 /* ----------- End Contact Page css----------- */
 
 /* ----------- Work Page css----------- */
-/* clear fix */
-.grid:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-/* ---- .element-item ---- */
-
-/* 5 columns, percentage width */
-.grid-item,
-.grid-sizer {
-  width: 33.33333%;
-}
-.grid-item {
-  float: left;
-  width: 33.33333%;
-  height: 460px;
-  margin-bottom: 30px;
-}
-
-.grid-item--width2 {
-  width: 66.66667%;
-}
-
 .work {
   .banner {
     @include box-shadow(0, 20px, 60px, rgba($black, 0.2));
@@ -2595,6 +2629,29 @@ button {
   }
   .project {
     padding-bottom: 120px;
+    ul {
+      @include justify-content(center);
+      border-bottom: 0;
+      li {
+        a {
+          @include box-shadow(0, 3px, 10px, rgba($black, 0.3));
+          border: none;
+          background: #fff;
+          padding: 8px 50px;
+          font-size: 40px;
+          margin: 28px 35px;
+          font-family: $proximaRegular;
+          @include border-radius(16px);
+          color: $white-grey;
+          &.active {
+            @include box-shadow(0, 3px, 26px, rgba(#f26a11, 0.28));
+            color: $black-grey !important;
+            @include transition(all 0.3s ease);
+            font-weight: 700;
+          }
+        }
+      }
+    }
     button {
       @include box-shadow(0, 3px, 10px, rgba($black, 0.3) !important);
       border: none;
@@ -2621,6 +2678,13 @@ button {
     .projectfilter {
       margin-top: 60px;
     }
+    .tab-content {
+      .tab-pane {
+        &.active {
+          @include flexbox();
+        }
+      }
+    }
   }
 }
 .swap-items {
@@ -2635,10 +2699,15 @@ button {
 /* ----------- Press Kit page css----------- */
 .press-kit {
   .banner {
-    &:before {
-      content: "";
-      background: rgba($black, 0.53);
-      @include box-shadow(0, 44px, 99px, rgba(#98833c, 0.25));
+    .introText {
+      @include justify-content(space-between);
+    }
+    a {
+      font-size: 22px;
+      font-family: $proximaBold;
+      @include box-shadow(0, 3px, 6px, rgba($black, 0.43));
+      @include border-radius(18px);
+      padding: 10px 30px;
     }
   }
   .section-title {
@@ -2698,6 +2767,34 @@ button {
   }
 }
 /* ----------- End Press Kit page css----------- */
+
+/* ----------- Terms and Condition page css----------- */
+.terms-condition {
+  .content-block {
+    h2 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 28px;
+    }
+  }
+}
+/* ----------- End Terms and Condition page css----------- */
+.privacy-policy {
+  .content-block {
+    h2 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 28px;
+    }
+  }
+}
+/* ----------- Privacy Policy page css----------- */
+
+/* ----------- End Privacy Policy page css----------- */
 
 /* ----------- Not Found page css----------- */
 #notfound {
@@ -2803,7 +2900,7 @@ footer {
     input {
       color: $white-grey;
       background: $black-grey;
-      border-radius: 11px;
+      @include border-radius(11px);
       outline: none;
       border: 1px solid $yellow;
       height: 52px;
@@ -2875,45 +2972,6 @@ footer {
   opacity: 0.01;
   transition: opacity 300ms ease-in-out;
 }
-.jarallax {
-  position: relative;
-  z-index: 0;
-}
-span[data-jarallax-element] {
-  display: inline-block;
-}
-/*Custom scroll Bar*/
-// #my-scrollbar{
-//   position: fixed;
-//     left: 0;
-//     top: 0;
-//     width: 100%;
-//     height: 100vh;
-//     .scroll-content{
-//       position: relative;
-//       width: 100%;
-//       min-height: 100vh;
-//       overflow: hidden;
-//       .intro{
-//         position: relative;
-//         min-height: 100vh;
-//       }
-//     }
-// }
-
-// ::-webkit-scrollbar-track {
-//   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-//   background-color: #f5f5f5;
-// }
-// ::-webkit-scrollbar {
-//   width: 10px;
-//   background-color: #f5f5f5;
-// }
-// ::-webkit-scrollbar-thumb {
-//   background-color: $yellow;
-// }
-/*End Custom scroll Bar*/
-/*Alert Popup  Css*/
 .swal2-container {
   .swal2-popup {
     @include border-radius(14px);
@@ -2954,22 +3012,15 @@ span[data-jarallax-element] {
   .swal2-icon.swal2-success {
     border-color: #2c8b35 !important;
     border: 2px solid;
-    // width: 100px;
-    // height: 100px;
     .swal2-success-line-tip {
       border-color: #2c8b35 !important;
       border: 2px solid;
-      // width: 38px !important;
       background: #2c8b35 !important;
-      // top: 3.35em !important;
-      // left: 15px !important;
     }
     .swal2-success-line-long {
       border-color: #2c8b35 !important;
       border: 2px solid;
       background: #2c8b35 !important;
-      // width: 55px !important;
-      // top: 3em !important;
     }
     .swal2-success-circular-line-left {
       background: none !important;
@@ -2996,4 +3047,6 @@ span[data-jarallax-element] {
   }
 }
 /*End Fade In Animation*/
+/* ----------- Suppoted Maximum mobile, Tablet and Desktop ----------- */
 @import "./responsive.scss";
+/* ----------- End Suppoted Maximum mobile, Tablet and Desktop ----------- */

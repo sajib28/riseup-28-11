@@ -1,40 +1,36 @@
 import React, { Component } from 'react'
 import Nav from '../../commonTools/Nav';
 import Footer from '../../commonTools/Footer';
-// import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
-import WOW from 'wowjs';
 import $ from 'jquery';
-// import Accordion from '../../commonTools/Accordion';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faBars } from '@fortawesome/free-solid-svg-icons'
+import WOW from 'wowjs';
 class ApplicationForm extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
-
         // Activated WoW Js
         new WOW.WOW({
-            live: true,
+            live: false,
             mobile: false,
         }).init();
         // End Activated WoW Js
     }
-    
     constructor(props) {
         super(props);
         this.state = {
             name: '',
             email: '',
             phone: '',
+            photoFile: 'null',
+            photoPreviewUrl: '',
+            photoValue:'',
             cvFile: 'null',
-            cvPreviewUrl: 'nill',
+            cvPreviewUrl: '',
             cvValue:'',
             nameError: '',
             emailError: '',
             phoneError: '',
-            cvError: ''
-
-
+            cvError: '',
+            photoError:''
         };
     }
 
@@ -53,6 +49,22 @@ class ApplicationForm extends Component {
         this.setState({ phone: event.target.value }, () => {
             this.validatePhone();
         });
+    }
+    handlePhotoChange = (event) => {
+        this.setState({ 
+            photoFile: event.target.files[0],
+            photoValue: event.target.value}, () => {
+            this.validatePhoto();
+        });
+        let reader = new FileReader();
+     
+        reader.onloadend = () => {
+          this.setState({
+            photoPreviewUrl: reader.result
+          });
+        }
+     
+        reader.readAsDataURL(event.target.files[0])
     }
     handleCvChange = (event) => {
         this.setState({ 
@@ -76,30 +88,26 @@ class ApplicationForm extends Component {
             this.setState({
                 nameError: 'Please type your name'
             });
-            return true
+            return false
         }
         else if (name.length < 3) {
             this.setState({
                 nameError: 'Name must be longer than 2 characters'
             });
-            return true
+            return false
         }
         else if (name.match(/^\s+$/) !== null) {
             this.setState({
                 nameError: 'Please type valid name'
             });
-            return true
+            return false
         }
         else {
             this.setState({
                 nameError: ''
             });
-            return false
+            return true
         }
-        // this.setState({
-        //     nameError:
-        //         name.length > 3 ? null : 'Name must be longer than 3 characters'
-        // });
     }
     validateEmail = () => {
         const { email } = this.state;
@@ -107,26 +115,22 @@ class ApplicationForm extends Component {
             this.setState({
                 emailError: 'Please Enter your email'
             });
-            return true
+            return false
         }
         else if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
             this.setState({
                 emailError: 'Please Enter Valid email'
 
             });
-            return true
+            return false
         }
         else {
             this.setState({
                 emailError: ''
 
             });
-            return false
+            return true
         }
-        // this.setState({
-        //     emailError:
-        //         email.length > 3 ? null : 'Name must be longer than 3 characters'
-        // });
     }
     validatePhone = () => {
         const { phone } = this.state;
@@ -134,19 +138,41 @@ class ApplicationForm extends Component {
             this.setState({
                 phoneError: 'Please type your number'
             });
-            return true
+            return false
         }
         else if (isNaN(phone)) {
             this.setState({
                 phoneError: 'Please type only number'
             });
-            return true
+            return false
         }
         else {
             this.setState({
                 phoneError: ''
             });
+            return true
+        }
+    }
+    validatePhoto = () => {
+        const { photoValue } = this.state;
+        var allowedExtensions = /(\.pdf|\.jpg|\.png)$/i;
+        if (photoValue === '') {
+            this.setState({
+                photoError: 'Please Upload your Photo'
+            });
             return false
+        }
+        else if (!allowedExtensions.exec(photoValue)) {
+            this.setState({
+                photoError: 'Please Upload your photo with Valid Extension'
+            });
+            return false
+        }
+        else {
+            this.setState({
+                photoError: ''
+            });
+            return true
         }
     }
     validateCv = () => {
@@ -156,7 +182,7 @@ class ApplicationForm extends Component {
             this.setState({
                 cvError: 'Please Upload your CV'
             });
-            return true
+            return false
         }
         else if (!allowedExtensions.exec(cvValue)) {
             this.setState({
@@ -168,7 +194,7 @@ class ApplicationForm extends Component {
             this.setState({
                 cvError: ''
             });
-            return false
+            return true
         }
     }
     handleSubmit = (event) => {
@@ -176,21 +202,26 @@ class ApplicationForm extends Component {
         this.validateName();
         this.validateEmail();
         this.validatePhone();
+        this.validatePhoto();
         this.validateCv();
-        if (this.validateName() === true) {
+        if (this.validateName() === false) {
             $('html, body').animate({ scrollTop: $('#name').offset().top - 150 }, 'slow');
             return false;
         }
-        else if (this.validateEmail() === true) {
+        else if (this.validateEmail() === false) {
             $('html, body').animate({ scrollTop: $('#email').offset().top - 150 }, 'slow');
             return false;
         }
 
-        else if (this.validatePhone() === true) {
+        else if (this.validatePhone() === false) {
             $('html, body').animate({ scrollTop: $('#phone').offset().top - 150 }, 'slow');
             return false;
         }
-        else if (this.validateCv() === true) {
+        else if (this.validatePhoto() === false) {
+            $('html, body').animate({ scrollTop: $('#photo').offset().top - 150 }, 'slow');
+            return false;
+        }
+        else if (this.validateCv() === false) {
             $('html, body').animate({ scrollTop: $('#cv').offset().top - 150 }, 'slow');
             return false;
         }
@@ -199,17 +230,27 @@ class ApplicationForm extends Component {
                 icon: 'success',
                 title: 'The form has been successfully submitted',
                 showConfirmButton: true
-            })
+            });
         }
     }
     render() {
         let $cvPreview = '';
+        let $photoPreview = '';
+        //   Cv preview
         if (this.state.cvPreviewUrl) {
            $cvPreview = (<div className="image-container" ><a href={this.state.cvPreviewUrl}>Click here to view file</a></div>);
           }
           else{
             $cvPreview = '';
           }
+        //Image preview
+        let allowedExtensionsPhoto = /(\.pdf|\.jpg|\.png)$/i;
+          if (this.state.photoPreviewUrl && allowedExtensionsPhoto.exec(this.state.photoValue)) {
+            $photoPreview = (<div className="image-container" ><img src={this.state.photoPreviewUrl} alt="Rise Up Labs, iOS and Android Mobile Game Developer" /></div>);
+           }
+           else{
+             $photoPreview = '';
+           }
         return (
             <div className="page application-form">
                 <Nav className="navbar navbar-expand-lg" />
@@ -228,8 +269,8 @@ class ApplicationForm extends Component {
                 {/* End Banner */}
                 <section className="career-form">
                     <div className="container">
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="row">
+                        <form id="careerForm" onSubmit={this.handleSubmit}>
+                            <div className="row wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s">
                                 <div className="col-lg-3 col-md-5">
                                     <h3>Personal information</h3>
                                     <p>Tell us something about yourself</p>
@@ -255,15 +296,17 @@ class ApplicationForm extends Component {
                                             <div className="form-group photo-upload">
                                                 <h2 className="photo-lebel">Photo</h2>
                                                 <label htmlFor="photo" className="photo">Add File </label>
-                                                <input type="file" className="form-control-file" name="photo" id="photo" />
+                                                <input type="file" className={`form-control ${this.state.photoError ? 'is-invalid' : ''}`} name="photo" id="photo" value={this.state.photoValue} onChange={this.handlePhotoChange} />
                                                 <span>We accept PNG, JPG, and JPEG files</span>
+                                                { $photoPreview }
+                                                <div className='invalid-feedback'>{this.state.photoError}</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <hr />
-                            <div className="row">
+                            <hr className="wow fadeInUp" animation-delay="0.8s" data-wow-delay="0.8s"/>
+                            <div className="row wow fadeInUp" animation-delay="0.8s" data-wow-delay="0.8s">
                                 <div className="col-lg-3 col-md-5">
                                     <h3>CV / Resume <span className="text-danger">*</span></h3>
                                     <p>Upload your CV or resume file</p>
@@ -282,8 +325,8 @@ class ApplicationForm extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <hr />
-                            <div className="row">
+                            <hr className="wow fadeInUp" animation-delay="1.0s" data-wow-delay="1.0s"/>
+                            <div className="row wow fadeInUp" animation-delay="1.0s" data-wow-delay="1.0s">
                                 <div className="col-lg-3 col-md-5">
                                     <h3>Cover letter</h3>
                                     <p>Insert your cover letter here</p>
@@ -298,8 +341,8 @@ class ApplicationForm extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <hr />
-                            <div className="row">
+                            <hr className="wow fadeInUp" animation-delay="1.0s" data-wow-delay="1.0s"/>
+                            <div className="row wow fadeInUp" animation-delay="1.0s" data-wow-delay="1.0s">
                                 <div className="col-lg-12 d-block text-center">
                                     <button type="submit" className="cus-btn"><span className="text-color">Submit</span> Application</button>
                                 </div>

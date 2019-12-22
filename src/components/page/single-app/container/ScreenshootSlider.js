@@ -5,15 +5,15 @@ import $ from 'jquery';
 // Screenshoot Slider Loop
 const screenshoot_slider = [
     {
-        screenshoot_img: require('../../../../assets/img/screenshot-slider/screenshot-1.png'),
+        screenshoot_img: require('../../../../assets/img/screenshot-slider/screenshot-1.jpg'),
         alt_img: 'Rise Up Labs, iOS and Android Mobile Game Developer'
     },
     {
-        screenshoot_img: require('../../../../assets/img/screenshot-slider/screenshot-1.png'),
+        screenshoot_img: require('../../../../assets/img/screenshot-slider/screenshot-1.jpg'),
         alt_img: 'Rise Up Labs, iOS and Android Mobile Game Developer'
     },
     {
-        screenshoot_img: require('../../../../assets/img/screenshot-slider/screenshot-1.png'),
+        screenshoot_img: require('../../../../assets/img/screenshot-slider/screenshot-1.jpg'),
         alt_img: 'Rise Up Labs, iOS and Android Mobile Game Developer'
     },
 ]

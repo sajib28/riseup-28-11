@@ -1,32 +1,17 @@
 import React, { Component } from 'react';
-import src1 from '../../../assets/media/intechnic.mp4';
-import poster from '../../../assets/img/intechnic.jpg';
 import CompanySummary from '../../commonTools/CompanySummary';
 import CompanyLogo from '../../commonTools/CompanyLogo';
 import ContactForm from '../../commonTools/ContactForm';
 import Footer from '../../commonTools/Footer';
-import project1 from '../../../assets/img/project/meet-meena.png';
-import project2 from '../../../assets/img/project/adolescent-app.png';
-import project3 from '../../../assets/img/project/language-movement.png';
-import project4 from '../../../assets/img/project/meena-game.png';
-import appdev1 from '../../../assets/img/app-development.png';
-import appdev2 from '../../../assets/img/game-development.png';
-import appdev3 from '../../../assets/img/web-development.png';
-import appdev4 from '../../../assets/img/xr-solution.png';
-import appdev5 from '../../../assets/img/iets.png';
 import Nav from '../../commonTools/Nav';
-import HomeSlider from '../../commonTools/HomeSlider';
+import HomeSlider from './HomeSlider';
 import VisibilitySensor from 'react-visibility-sensor';
-// import ScrollAnimation from 'react-animate-on-scroll';
-// import Scrollbar from 'smooth-scrollbar';
-import WOW from 'wowjs';
-// import Rellax from 'rellax';
-import simpleParallax from 'simple-parallax-js';
-import {Parallax,withController } from 'react-scroll-parallax';
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 import {
     Link
 } from "react-router-dom";
 import $ from 'jquery';
+import WOW from 'wowjs';
 class Home extends Component {
     state = {
         visible: false
@@ -37,33 +22,21 @@ class Home extends Component {
         }
     }
     componentDidMount() {
-        var simple_parallax = document.getElementsByClassName('simple-parallax');
-        new simpleParallax(simple_parallax,{
-                scale: 1.5
-        });
-
-        // var rellax = new Rellax('.rellax', {
-
-        // });
         window.scrollTo(0, 0);
-        var Menuheight = $("#mainMenu").height();
+
+        // Activated WoW Js
+        new WOW.WOW({
+            live: false,
+            mobile: false,
+        }).init();
+        // End Activated WoW Js
+        var Menuheight = 95;
         $('a[href*=\\#]').bind('click', function (e) {
             e.preventDefault();
             $('html, body').stop().animate({
                 scrollTop: $(this.hash).offset().top - Menuheight
-            }, 500);
+            }, 1000);
         });
-        // Activated WoW Js
-        new WOW.WOW({
-            live: true,
-            mobile: false,
-        }).init();
-        // End Activated WoW Js
-
-        // Scrollbar.init(document.querySelector('#my-scrollbar'));
-        // var bodyHeight = $(".scroll-content").height();
-        // $('body').css('height',bodyHeight);
-
         $(document).ready(function () {
             var Menuheight = $("#mainMenu").height();
             $('.service-menu a[href^="#"]').bind('click', function (e) {
@@ -92,22 +65,22 @@ class Home extends Component {
         $(".swap-items:odd").addClass('reverse-items');
         //End  Add Class for Odd/Even items
         $(window).scroll(function () {
-            var a = $(window).scrollTop();
+            var scrollTop = $(window).scrollTop();
             var serviceMenu = $('.service-menu').height();
             var screenmiddle = ($(window).height() / 2) - (serviceMenu / 2);
-            var pos = $('#mainMenu').height();
+            var MenuHeight = $('#mainMenu').height();
 
             if ($('.wrap').length) {
-                var b = $('.wrap').offset().top - pos - screenmiddle - 50;
+                var service_menu_position = $('.wrap').offset().top - MenuHeight - screenmiddle - 50;
             }
             // var m = $('.sticky-menu').outerHeight() + $('#mainMenu').outerHeight();
 
             // var fixtop = $('#mainMenu').outerHeight();
             if ($('.home-project').length) {
-                var y = $('.home-project').offset().top - screenmiddle * 2 - 50;
+                var offset_top_home_project = $('.home-project').offset().top - screenmiddle * 2 - 200;
             }
 
-            if (a > b) {
+            if (scrollTop > service_menu_position) {
                 $('.sticky-menu').addClass('fixed').css({ 'top': screenmiddle + 50 + 'px' });
                 $('.wrap').height($('.sticky-menu').outerHeight());
             }
@@ -115,7 +88,7 @@ class Home extends Component {
                 $('.sticky-menu').removeClass('fixed')
                 $('.wrap').height(0);
             }
-            if (a > y) {
+            if (scrollTop > offset_top_home_project) {
                 $('.sticky-menu').addClass('footstick');
                 $('.wrap').height($('.sticky-menu').outerHeight());
 
@@ -127,7 +100,7 @@ class Home extends Component {
     }
 
     render() {
-        let alt = "Rise Up Labs";
+        let alt = "Rise Up Labs, iOS and Android Mobile Game Developer";
         return (
             <div className="home" id="home">
                 <Nav className="navbar navbar-expand-lg" />
@@ -135,8 +108,8 @@ class Home extends Component {
                     <HomeSlider />
                     <section className="intro" data-ui="light">
                         <div className="background-cover">
-                            <video autoPlay muted loop playsInline preload="none" poster={poster}>
-                                <source src={src1} type="video/mp4" />
+                            <video autoPlay muted loop playsInline preload="none" poster={require('../../../assets/img/intechnic.jpg')}>
+                                <source src={require('../../../assets/media/intechnic.mp4')} type="video/mp4" />
                             </video>
                         </div>
                         <div className="container middle-content">
@@ -158,13 +131,22 @@ class Home extends Component {
                                             <h2 className="text-left"><span
                                                 className="text-color">Riseup</span> Services</h2>
                                             <p>We provide complete solution of your digital products from research to vision</p>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div id="riseupApps" className="service-block" data-ui="light">
+                            <div className="first-letter-wrapper">
+                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                    <ParallaxProvider>
+                                        <Parallax y={[10, -30]} tagOuter="figure">
+                                            <div className="first-letter">A</div>
+                                        </Parallax >
+                                    </ParallaxProvider>
+                                </VisibilitySensor>
+                            </div>
                             <div className="home-sidebar">
                                 <div className="wrap"></div>
                                 <nav className="service-menu ui-light sticky-menu" id="SideBarMenu">
@@ -181,16 +163,17 @@ class Home extends Component {
                                 <div className="row">
                                     <div className="col-lg-12">
                                         <div className="apps-wrapper">
-                                            {/* <VisibilitySensor onChange={this.onVisibilityChange}>
-                                                 
-                                            </VisibilitySensor> */}
-
-                                            
-                                                <Parallax y={[60, -60]} tagOuter="figure">
-                                                    <h2>Apps Development</h2>
-                                                </Parallax >
-                                            <figure>
-                                                <img className="parallax-content" src={appdev1} alt="" />
+                                            <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                <div className="title">
+                                                    <ParallaxProvider>
+                                                        <Parallax y={this.state.visible ? [50, -50] : [50, -50]} tagOuter="figure">
+                                                            <h2>Apps Development</h2>
+                                                        </Parallax >
+                                                    </ParallaxProvider>
+                                                </div>
+                                            </VisibilitySensor>
+                                            <figure className="img-box">
+                                                <img src={require('../../../assets/img/app-development.jpg')} alt={alt} />
                                                 <div className="img-overlay"></div>
                                             </figure>
                                             <div className="apps-content">
@@ -198,11 +181,17 @@ class Home extends Component {
                                                     <div className="swap-apps">
                                                         <div className="col-lg-4 col-md-12">
                                                             <div className="apps-details">
-                                                                <ul className="apps-info list-unstyled">
-                                                                    <li><i className="fab fa-apple"></i>iOS</li>
-                                                                    <li><i className="fab fa-android"></i>Android</li>
-                                                                    <li><i className="fab fa-windows"></i>Windows Mobile</li>
-                                                                </ul>
+                                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                                    <ParallaxProvider>
+                                                                        <Parallax y={this.state.visible ? [30, -30] : [30, -30]} tagOuter="figure">
+                                                                            <ul className="apps-info list-unstyled">
+                                                                                <li><i className="fab fa-apple"></i>iOS</li>
+                                                                                <li><i className="fab fa-android"></i>Android</li>
+                                                                                <li><i className="fab fa-windows"></i>Windows Mobile</li>
+                                                                            </ul>
+                                                                        </Parallax>
+                                                                    </ParallaxProvider>
+                                                                </VisibilitySensor>
                                                             </div>
                                                         </div>
                                                         <div className="col-lg-8 col-md-12">
@@ -222,42 +211,50 @@ class Home extends Component {
                             </div>
                         </div>
                         <div id="riseupGames" className="service-block" data-ui="light">
+                            <div className="first-letter-wrapper">
+                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                    <ParallaxProvider>
+                                        <Parallax y={this.state.visible ? [50, -30] : [0, -0]} tagOuter="figure">
+                                            <div className="first-letter">G</div>
+                                        </Parallax >
+                                    </ParallaxProvider>
+                                </VisibilitySensor>
+                            </div>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12">
                                         <div className="apps-wrapper">
-                                            {/* <Parallax ref={ref => (this.parallax = ref)} pages={3}>
-                                                <ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
-                                                <h2>Games Development</h2>
-                                                </ParallaxLayer>
-                                            </Parallax> */}
-                                            {/* <VisibilitySensor onChange={this.onVisibilityChange}>
-                                                <ParallaxProvider {...this.state.visible}>
-                                                    <Parallax y={[60, -60]} tagOuter="figure">
-                                                        <h2>Games Development</h2>
-                                                    </Parallax >
-                                                </ParallaxProvider>
-                                            </VisibilitySensor> */}
-                                            {/* <div className="simple-parallax">
-                                                <h2>Games Development</h2>
-                                            </div> */}
-                                            <figure>
-                                                <img className="parallax-content" src={appdev2} alt="" />
+                                            <div className="title">
+                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                    <ParallaxProvider>
+                                                        <Parallax y={this.state.visible ? [60, -50] : [0, -0]} tagOuter="figure">
+                                                            <h2>Games Development</h2>
+                                                        </Parallax >
+                                                    </ParallaxProvider>
+                                                </VisibilitySensor>
+                                            </div>
+                                            <figure className="img-box">
+                                                <img src={require('../../../assets/img/game-development.jpg')} alt={alt} />
                                                 <div className="img-overlay"></div>
                                             </figure>
                                             <div className="apps-content">
                                                 <div className="row">
                                                     <div className="swap-apps">
-
                                                         <div className="col-lg-4">
                                                             <div className="apps-details">
-                                                                <ul className="apps-info list-unstyled">
-                                                                    <li><i className="fab fa-apple"></i>iOS</li>
-                                                                    <li><i className="fab fa-android"></i>Android</li>
-                                                                    <li><i className="fab fa-windows"></i>Windows Mobile</li>
-                                                                    <li><i className="fab fa-facebook"></i>Facebook Game</li>
-                                                                    <li><i className="fab fa-react"></i>React Native</li>
-                                                                </ul>
+                                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                                    <ParallaxProvider>
+                                                                        <Parallax y={this.state.visible ? [10, -50] : [0, -0]} tagOuter="figure">
+                                                                            <ul className="apps-info list-unstyled">
+                                                                                <li><i className="fab fa-apple"></i>iOS</li>
+                                                                                <li><i className="fab fa-android"></i>Android</li>
+                                                                                <li><i className="fab fa-windows"></i>Windows Mobile</li>
+                                                                                <li><i className="fab fa-facebook"></i>Facebook Game</li>
+                                                                                <li><i className="fab fa-react"></i>React Native</li>
+                                                                            </ul>
+                                                                        </Parallax>
+                                                                    </ParallaxProvider>
+                                                                </VisibilitySensor>
                                                             </div>
                                                         </div>
                                                         <div className="col-lg-8">
@@ -277,19 +274,31 @@ class Home extends Component {
                             </div>
                         </div>
                         <div id="riseupWeb" className="service-block" data-ui="light">
+                            <div className="first-letter-wrapper">
+                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                    <ParallaxProvider>
+                                        <Parallax y={this.state.visible ? [50, -30] : [0, -0]} tagOuter="figure">
+                                            <div className="first-letter">W</div>
+                                        </Parallax >
+                                    </ParallaxProvider>
+                                </VisibilitySensor>
+                            </div>
+
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12">
                                         <div className="apps-wrapper">
-                                            {/* <VisibilitySensor onChange={this.onVisibilityChange}>
-                                                <ParallaxProvider {...this.state.visible}>
-                                                    <Parallax y={[60, -60]} tagOuter="figure">
-                                                        <h2 className="apps-title">Web System</h2>
-                                                    </Parallax >
-                                                </ParallaxProvider>
-                                            </VisibilitySensor> */}
-                                            <figure>
-                                                <img className="parallax-content" src={appdev3} alt="" />
+                                            <div className="title">
+                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                    <ParallaxProvider>
+                                                        <Parallax y={this.state.visible ? [60, -50] : [0, -0]} tagOuter="figure">
+                                                            <h2>Web System</h2>
+                                                        </Parallax >
+                                                    </ParallaxProvider>
+                                                </VisibilitySensor>
+                                            </div>
+                                            <figure className="img-box">
+                                                <img src={require('../../../assets/img/web-development.jpg')} alt={alt} />
                                                 <div className="img-overlay"></div>
                                             </figure>
                                             <div className="apps-content">
@@ -297,11 +306,18 @@ class Home extends Component {
                                                     <div className="swap-apps">
                                                         <div className="col-lg-4">
                                                             <div className="apps-details">
-                                                                <ul className="apps-info list-unstyled">
-                                                                    <li><i className="fas fa-laptop"></i>Digital Platform</li>
-                                                                    <li><i className="fas fa-globe"></i>Web Portal</li>
-                                                                    <li><i className="fa fa-shopping-cart"></i>E-Commerce Solutions</li>
-                                                                </ul>
+                                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                                    <ParallaxProvider>
+                                                                        <Parallax y={this.state.visible ? [10, -30] : [0, -0]} tagOuter="figure">
+                                                                            <ul className="apps-info list-unstyled">
+                                                                                <li><i className="fas fa-laptop"></i>Digital Platform</li>
+                                                                                <li><i className="fas fa-globe"></i>Web Portal</li>
+                                                                                <li><i className="fa fa-shopping-cart"></i>E-Commerce Solutions</li>
+                                                                            </ul>
+                                                                        </Parallax>
+                                                                    </ParallaxProvider>
+                                                                </VisibilitySensor>
+
                                                             </div>
                                                         </div>
                                                         <div className="col-lg-8">
@@ -319,19 +335,30 @@ class Home extends Component {
                             </div>
                         </div>
                         <div id="riseupXr" className="service-block" data-ui="light">
+                            <div className="first-letter-wrapper">
+                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                    <ParallaxProvider>
+                                        <Parallax y={this.state.visible ? [50, -30] : [0, -0]} tagOuter="figure">
+                                            <div className="first-letter">X</div>
+                                        </Parallax >
+                                    </ParallaxProvider>
+                                </VisibilitySensor>
+                            </div>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12">
                                         <div className="apps-wrapper">
-                                            {/* <VisibilitySensor onChange={this.onVisibilityChange}>
-                                                <ParallaxProvider {...this.state.visible}>
-                                                    <Parallax y={[60, -60]} tagOuter="figure">
-                                                        <h2>XR Solution</h2>
-                                                    </Parallax >
-                                                </ParallaxProvider>
-                                            </VisibilitySensor> */}
-                                            <figure>
-                                                <img className="parallax-content" src={appdev4} alt="" />
+                                            <div className="title">
+                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                    <ParallaxProvider>
+                                                        <Parallax y={this.state.visible ? [60, -50] : [0, -0]} tagOuter="figure">
+                                                            <h2>XR Solution</h2>
+                                                        </Parallax >
+                                                    </ParallaxProvider>
+                                                </VisibilitySensor>
+                                            </div>
+                                            <figure className="img-box">
+                                                <img src={require('../../../assets/img/xr-solution.jpg')} alt={alt} />
                                                 <div className="img-overlay"></div>
                                             </figure>
                                             <div className="apps-content">
@@ -339,11 +366,17 @@ class Home extends Component {
                                                     <div className="swap-apps">
                                                         <div className="col-lg-4">
                                                             <div className="apps-details">
-                                                                <ul className="apps-info list-unstyled">
-                                                                    <li><span>AR</span>Augmented reality</li>
-                                                                    <li><span>VR</span>Virtual reality</li>
-                                                                    <li><span>MR</span>Mixed reality</li>
-                                                                </ul>
+                                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                                    <ParallaxProvider>
+                                                                        <Parallax y={this.state.visible ? [10, -30] : [0, -0]} tagOuter="figure">
+                                                                            <ul className="apps-info list-unstyled">
+                                                                                <li><span>AR</span>Augmented reality</li>
+                                                                                <li><span>VR</span>Virtual reality</li>
+                                                                                <li><span>MR</span>Mixed reality</li>
+                                                                            </ul>
+                                                                        </Parallax>
+                                                                    </ParallaxProvider>
+                                                                </VisibilitySensor>
                                                             </div>
                                                         </div>
                                                         <div className="col-lg-8">
@@ -361,19 +394,31 @@ class Home extends Component {
                             </div>
                         </div>
                         <div id="riseupItes" className="service-block" data-ui="light">
+                            <div className="first-letter-wrapper">
+                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                    <ParallaxProvider>
+                                        <Parallax y={this.state.visible ? [50, -30] : [0, -0]} tagOuter="figure">
+                                            <div className="first-letter">I</div>
+                                        </Parallax >
+                                    </ParallaxProvider>
+                                </VisibilitySensor>
+                            </div>
+
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12">
                                         <div className="apps-wrapper">
-                                            {/* <VisibilitySensor onChange={this.onVisibilityChange}>
-                                                <ParallaxProvider {...this.state.visible}>
-                                                    <Parallax y={[60, -60]} tagOuter="figure">
-                                                        <h2>ITES</h2>
-                                                    </Parallax >
-                                                </ParallaxProvider>
-                                            </VisibilitySensor> */}
-                                            <figure>
-                                                <img className="parallax-content" src={appdev5} alt="" />
+                                            <div className="title">
+                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                    <ParallaxProvider>
+                                                        <Parallax y={this.state.visible ? [60, -50] : [0, -0]} tagOuter="figure">
+                                                            <h2>ITES</h2>
+                                                        </Parallax >
+                                                    </ParallaxProvider>
+                                                </VisibilitySensor>
+                                            </div>
+                                            <figure className="img-box">
+                                                <img src={require('../../../assets/img/iets.jpg')} alt={alt} />
                                                 <div className="img-overlay"></div>
                                             </figure>
                                             <div className="apps-content">
@@ -381,10 +426,16 @@ class Home extends Component {
                                                     <div className="swap-apps">
                                                         <div className="col-lg-4">
                                                             <div className="apps-details">
-                                                                <ul className="apps-info list-unstyled">
-                                                                    <li><i className="fab fa-apple"></i>HR Service</li>
-                                                                    <li><i className="fab fa-android"></i>Development</li>
-                                                                </ul>
+                                                                <VisibilitySensor onChange={this.onVisibilityChange}>
+                                                                    <ParallaxProvider>
+                                                                        <Parallax y={this.state.visible ? [10, -30] : [0, -0]} tagOuter="figure">
+                                                                            <ul className="apps-info list-unstyled">
+                                                                                <li><i className="fab fa-apple"></i>HR Service</li>
+                                                                                <li><i className="fab fa-android"></i>Development</li>
+                                                                            </ul>
+                                                                        </Parallax>
+                                                                    </ParallaxProvider>
+                                                                </VisibilitySensor>
                                                             </div>
                                                         </div>
                                                         <div className="col-lg-8">
@@ -417,12 +468,12 @@ class Home extends Component {
                                 <div className="items">
                                     <div className="col-lg-8">
                                         <div className="list-items">
-                                            <div className="item-bg" style={{ backgroundImage: `url(${project1})` }}>
+                                            <div className="item-bg" style={{ backgroundImage: `url(${require('../../../assets/img/project/meet-meena.jpg')})` }}>
 
                                             </div>
                                             <div className="item-body">
                                                 <h3 className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">Meena Game</h3>
-                                                <img className="wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s" src={require('../../../assets/img/project/unicef-logo.png')} alt="" />
+                                                <img className="wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s" src={require('../../../assets/img/project/unicef-logo.png')} alt={alt} />
                                                 <p className="wow fadeInUp" animation-delay="0.8s" data-wow-delay="0.8s">Another mobile oriented channel that UNICEF intends to use to execute its Meena Communication Initiative (MCI) aimed at changing perceptions and behavior that hamper the survival</p>
                                                 <Link to={`${process.env.PUBLIC_URL}/single-app`} className="cus-btn">See more<i className="fas fa-arrow-right"></i></Link>
                                             </div>
@@ -430,12 +481,12 @@ class Home extends Component {
                                     </div>
                                     <div className="col-lg-4">
                                         <div className="list-items">
-                                            <div className="item-bg" style={{ backgroundImage: `url(${project2})` }}>
+                                            <div className="item-bg" style={{ backgroundImage: `url(${require('../../../assets/img/project/adolescent-app.jpg')})` }}>
 
                                             </div>
                                             <div className="item-body">
                                                 <h3 className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">Adolescent App</h3>
-                                                <img className="wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s" src={require('../../../assets/img/project/unicef-logo.png')} alt="" />
+                                                <img className="wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s" src={require('../../../assets/img/project/unicef-logo.png')} alt={alt} />
                                                 <p className="wow fadeInUp" animation-delay="0.8s" data-wow-delay="0.8s">A digital application for adolescent club members to connect, share knowledge and have access information.</p>
                                                 <Link to={`${process.env.PUBLIC_URL}/single-app`} className="cus-btn">See more<i className="fas fa-arrow-right"></i></Link>
                                             </div>
@@ -445,11 +496,11 @@ class Home extends Component {
                                 <div className="items">
                                     <div className="col-lg-8">
                                         <div className="list-items">
-                                            <div className="item-bg" style={{ backgroundImage: `url(${project4})` }}>
+                                            <div className="item-bg" style={{ backgroundImage: `url(${require('../../../assets/img/project/meena-game.jpg')})` }}>
                                             </div>
                                             <div className="item-body">
                                                 <h3 className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">Meena Game</h3>
-                                                <img className="wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s" src={require('../../../assets/img/project/unicef-logo.png')} alt="" />
+                                                <img className="wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s" src={require('../../../assets/img/project/unicef-logo.png')} alt={alt} />
                                                 <p className="wow fadeInUp" animation-delay="0.8s" data-wow-delay="0.8s">Meena is a cartoon character from South Asia. She is a spirited, nine-year-old girl, who braves all the odds – whether in her efforts to go to school or in fighting the discrimination against children.</p>
                                                 <Link to={`${process.env.PUBLIC_URL}/single-app`} className="cus-btn">See more<i className="fas fa-arrow-right"></i></Link>
                                             </div>
@@ -457,11 +508,11 @@ class Home extends Component {
                                     </div>
                                     <div className="col-lg-4">
                                         <div className="list-items">
-                                            <div className="item-bg" style={{ backgroundImage: `url(${project3})` }}>
+                                            <div className="item-bg" style={{ backgroundImage: `url(${require('../../../assets/img/project/language-movement.jpg')})` }}>
                                             </div>
                                             <div className="item-body">
                                                 <h3 className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s">Demo title</h3>
-                                                <img className="wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s" src={require('../../../assets/img/project/unicef-logo.png')} alt="" />
+                                                <img className="wow fadeInUp" animation-delay="0.6s" data-wow-delay="0.6s" src={require('../../../assets/img/project/unicef-logo.png')} alt={alt} />
                                                 <p className="wow fadeInUp" animation-delay="0.8s" data-wow-delay="0.8s">A digital application for adolescent club members to connect, share knowledge and have access information.</p>
                                                 <Link to={`${process.env.PUBLIC_URL}/single-app`} className="cus-btn">See more<i className="fas fa-arrow-right"></i></Link>
                                             </div>
@@ -471,7 +522,7 @@ class Home extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-lg-12">
-                                    <Link className="wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s" to={`${process.env.PUBLIC_URL}/work`} className="cus-btn details">View more<i className="fas fa-arrow-right"></i></Link>
+                                    <Link className="cus-btn details wow fadeInUp" animation-delay="0.4s" data-wow-delay="0.4s" to={`${process.env.PUBLIC_URL}/work`}>View more<i className="fas fa-arrow-right"></i></Link>
                                 </div>
                             </div>
                         </div>
@@ -513,7 +564,7 @@ class Home extends Component {
                                 <div className="swap-items">
                                     <div className="col-lg-6">
                                         <div className="image-block wow fadeIn" animation-delay="1s" data-wow-delay="0.4s">
-                                            <img src={require('../../../assets/img/work/home-work-1.png')} alt={alt} />
+                                            <img src={require('../../../assets/img/work/home-work-1.jpg')} alt={alt} />
                                         </div>
                                     </div>
                                     <div className="col-lg-6">
@@ -532,7 +583,7 @@ class Home extends Component {
 
                                     <div className="col-lg-6">
                                         <div className="image-block wow fadeIn" animation-delay="1s" data-wow-delay="0.4s">
-                                            <img src={require('../../../assets/img/work/home-work-2.png')} alt={alt} />
+                                            <img src={require('../../../assets/img/work/home-work-2.jpg')} alt={alt} />
                                         </div>
                                     </div>
                                     <div className="col-lg-6">
@@ -549,7 +600,7 @@ class Home extends Component {
 
                                     <div className="col-lg-6">
                                         <div className="image-block wow fadeIn" animation-delay="1s" data-wow-delay="0.4s">
-                                            <img src={require('../../../assets/img/work/home-work-3.png')} alt={alt} />
+                                            <img src={require('../../../assets/img/work/home-work-3.jpg')} alt={alt} />
                                         </div>
                                     </div>
                                     <div className="col-lg-6">
@@ -566,7 +617,7 @@ class Home extends Component {
 
                                     <div className="col-lg-6">
                                         <div className="image-block wow fadeIn" animation-delay="1s" data-wow-delay="0.4s">
-                                            <img src={require('../../../assets/img/work/home-work-4.png')} alt={alt} />
+                                            <img src={require('../../../assets/img/work/home-work-4.jpg')} alt={alt} />
                                         </div>
                                     </div>
                                     <div className="col-lg-6">
@@ -584,7 +635,7 @@ class Home extends Component {
 
                                     <div className="col-lg-6">
                                         <div className="image-block wow fadeIn" animation-delay="1s" data-wow-delay="0.4s">
-                                            <img src={require('../../../assets/img/work/home-work-5.png')} alt={alt} />
+                                            <img src={require('../../../assets/img/work/home-work-5.jpg')} alt={alt} />
                                         </div>
                                     </div>
                                     <div className="col-lg-6">
@@ -625,4 +676,4 @@ class Home extends Component {
         )
     }
 }
-export default withController(Home);
+export default Home;

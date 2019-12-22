@@ -44,7 +44,6 @@ class Footer extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.validateEmail();
-        //    alert(subscribe_email);
         if (this.validateEmail() === true) {
             $('html, body').animate({ scrollTop: $('#subscribe').offset().top - 150 }, 'slow');
             return false;
@@ -87,15 +86,15 @@ class Footer extends Component {
                                 <li><Link to={`${process.env.PUBLIC_URL}/apps-development`}>Apps Development</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/game-development`}>Game Development</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/web-system`}>Web System</Link></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/x-r-solution`}>XR Solution</Link></li>
+                                <li><Link to={`${process.env.PUBLIC_URL}/xr-solution`}>XR Solution</Link></li>
                                 <li><Link to={`${process.env.PUBLIC_URL}/ites`}>ITES</Link></li>
                             </ul>
                         </div>
                         <div className="col-lg-3 col-md-4">
                             <h3>Our Enterprise</h3>
                             <ul className="list-unstyled">
-                                <li><a href="http://appilian.com/" target="_blank">Appilian</a></li>
-                                <li><Link to={`${process.env.PUBLIC_URL}/xtreme-tech`}>Xtreme Interactive</Link></li>
+                                <li><a rel="noopener noreferrer" href="http://appilian.com/" target="_blank">Appilian</a></li>
+                                <li><a rel="noopener noreferrer" href="http://xtremeinteractive.com/" target="_blank">Xtreme Interactive</a></li>
                             </ul>
                             <div className="footer-contact">
                                 <h3>Contact Us</h3>
@@ -132,7 +131,7 @@ class Footer extends Component {
                             <div className="term-condition">
                                 <span>&copy; 2019 – Rise up | All Rights Reserved</span>
                                 <ul className="list-unstyled inline">
-                                    <li><Link to={`${process.env.PUBLIC_URL}/`}>Terms of Service</Link></li>|<li><Link to={`${process.env.PUBLIC_URL}/`}>Privacy Policy</Link></li>
+                                    <li><Link to={`${process.env.PUBLIC_URL}/terms-of-service`}>Terms of Service</Link></li>|<li><Link to={`${process.env.PUBLIC_URL}/privacy-policy`}>Privacy Policy</Link></li>
 
                                 </ul>
                             </div>

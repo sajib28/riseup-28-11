@@ -1,13 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+const social_media = [
+    {
+        social_link:'https://www.facebook.com/riseuplabs?v=feed',
+        social_icon:'fab fa-facebook-f'
+    },
+    {
+        social_link:'https://twitter.com/riseuplabs',
+        social_icon:'fab fa-twitter'
+    },
+    {
+        social_link:'https://www.linkedin.com/company/riseuplabs',
+        social_icon:'fab fa-linkedin-in'
+    },
+    {
+        social_link:'https://www.youtube.com/user/riseuplabs?sub_confirmation=1',
+        social_icon:'fab fa-youtube'
+    }
+]
+const get_social_media = social_media.map((single_media, i) =>{
+return(
+    <li key={i}><a rel="noopener noreferrer" href={single_media.social_link} target="_blank"><i className={single_media.social_icon}></i></a></li>
+)
+})
+
 class SocialMedia extends Component {
     render() {
         return (
             <ul className="list-unstyled list-inline">
-                <li><a rel="noopener noreferrer" href="https://www.facebook.com/riseuplabs?v=feed" target="_blank"><i className="fab fa-facebook-f"></i></a></li>
-                <li><a rel="noopener noreferrer" href="https://twitter.com/riseuplabs" target="_blank"><i className="fab fa-twitter"></i></a></li>
-                <li><a rel="noopener noreferrer" href="https://www.linkedin.com/company/riseuplabs" target="_blank"><i className="fab fa-linkedin-in"></i></a></li>
-                {/* <li><a rel="noopener noreferrer" href={`${process.env.PUBLIC_URL}/`} target="_blank"><i className="fas fa-meh-blank"></i></a></li> */}
-                <li><a rel="noopener noreferrer" href="https://www.youtube.com/user/riseuplabs?sub_confirmation=1" target="_blank"><i className="fab fa-youtube"></i></a></li>
+                {get_social_media}
             </ul>
         )
     }

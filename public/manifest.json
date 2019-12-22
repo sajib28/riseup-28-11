@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Rise Up Labs",
+  "name": "Rise Up Labs | iOS and Android Mobile Game Developer",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +8,13 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "riseup-logo",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "102x84"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#f26a11",
+  "background_color": "#fcfcfc"
 }

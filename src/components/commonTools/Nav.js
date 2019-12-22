@@ -9,16 +9,16 @@ import riseuplogo from '../../assets/img/riseup-logo.png';
 import logo from '../../assets/img/big-logo.png';
 import menubar from '../../assets/img/bars.png';
 import menuClose from '../../assets/img/close.png';
-import WOW from 'wowjs';
 class Nav extends Component {
-
+  constructor(props) {
+    super(props)
+    this.toggleMenu = this.toggleMenu.bind(this)
+  }
+  toggleMenu = e => {
+    e.preventDefault();
+    $(this.refs['toggle-div']).slideToggle();
+  }
   componentDidMount() {
-     // Activated WoW Js
-     new WOW.WOW({
-      live: true,
-      mobile: false,
-  }).init();
-  // End Activated WoW Js
     $(window).scroll(function () {
       headerFixed();
       function headerFixed() {
@@ -31,43 +31,19 @@ class Nav extends Component {
             mainMenu.classList.remove("sticky-header");
           }
         }
-
       }
     });
-    // dropdown menu
-    $(document).ready(function () {
-      //dropdown menu
-      $('.dropdown').on('show.bs.dropdown', function () {
-        $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
-      });
-      // Add slideUp animation to Bootstrap dropdown when collapsing.
-      $('.dropdown').on('hide.bs.dropdown', function () {
-        $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
-      });
-      //dropdown menu
-      $('.fullscreen-menu .navbar-nav li').click(function () {
-        if (!$(this).hasClass('dropdown')) {
-          $('#fullscreenMenu').modal('hide');
-        }
-      })
-      $('.company-logo a').click(function () {
-        if (!$(this).hasClass('dropdown')) {
-          $('#fullscreenMenu').modal('hide');
-        }
-      })
-      // $('#fullscreenMenu').scroll(function () {
-
-      //   // close button fixed
-      //   let fullscreenMenu = document.getElementById("fullscreenMenu");
-      //   if ($(fullscreenMenu).scrollTop() > 0) {
-      //     fullscreenMenu.classList.add("fixedCloseBtn");
-      //   } else {
-      //     fullscreenMenu.classList.remove("fixedCloseBtn");
-      //   }
-      //   //End  Close button fixed
-      // });
-    });
-
+    // modal hide after click menu or logo
+    $('.fullscreen-menu .navbar-nav li').click(function () {
+      if (!$(this).hasClass('dropdown')) {
+        $('#fullscreenMenu').modal('hide');
+      }
+    })
+    $('.company-logo a').click(function () {
+      if (!$(this).hasClass('dropdown')) {
+        $('#fullscreenMenu').modal('hide');
+      }
+    })
   }
   render() {
     return (
@@ -123,13 +99,13 @@ class Nav extends Component {
                   <div className="row">
                     <div className="col-lg-6 col-md-6 col-sm-6">
                       <div className="navbar">
-                        <ul className="list-unstyled left-menu navbar-nav">
+                        <ul className="nav list-unstyled left-menu navbar-nav">
                           <li className="nav-item">
                             <NavLink activeClassName='active' className="nav-link" to={`${process.env.PUBLIC_URL}/`} exact>Home</NavLink>
                           </li>
                           <li className="nav-item dropdown">
-                            <Link to="/" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services <i className="fas fa-chevron-down"></i></Link>
-                            <ul className="dropdown-menu">
+                            <Link to={`${process.env.PUBLIC_URL}/`} className="nav-link" onClick={this.toggleMenu}>Our Services <i className="fas fa-chevron-down"></i></Link>
+                            <ul className="dropdown-menu" ref="toggle-div">
                               <li className="nav-item">
                                 <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/apps-development`}>Apps Development</NavLink>
                               </li>
@@ -148,20 +124,17 @@ class Nav extends Component {
                             </ul>
                           </li>
                           <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/process">Our Process</NavLink>
+                            <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/process`}>Our Process</NavLink>
                           </li>
 
                           <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/work">Our Work</NavLink>
+                            <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/work`}>Our Work</NavLink>
                           </li>
                           <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/about">About Us</NavLink>
+                            <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/about`}>About Us</NavLink>
                           </li>
-                          {/* <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/coming-soon">Our clients</NavLink>
-                          </li> */}
                           <li className="nav-item">
-                            <Link className="nav-link" to="http://www.riseuplabs.com/blog/">Blog</Link>
+                            <a className="nav-link" rel="noopener noreferrer" href="http://www.riseuplabs.com/blog/">Blog</a>
                           </li>
                           <li className="nav-item">
                             <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/career`}>Career</NavLink>
@@ -171,9 +144,6 @@ class Nav extends Component {
                           </li>
                           <li className="nav-item">
                             <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/contact`}>Contact</NavLink>
-                          </li>
-                          <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to={`${process.env.PUBLIC_URL}/coming-soon`}>Apps</NavLink>
                           </li>
                         </ul>
                       </div>
@@ -191,7 +161,7 @@ class Nav extends Component {
                           <p>Head Office:B6,<br />Plot-35,Sonargaon<br />Janapath Road,Sector-07,<br />Uttara, Dhaka-1230,<br />Bangladesh</p>
                         </div>
                         <div className="social-media">
-                          <SocialMedia/>
+                          <SocialMedia />
                         </div>
                       </div>
                     </div>

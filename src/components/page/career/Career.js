@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Nav from '../../commonTools/Nav';
 import Footer from '../../commonTools/Footer';
-// import Banner from '../../commonTools/Banner';
-// import BackgroundImage from '../../../assets/img/event.jpg';
 import { Link } from "react-router-dom";
 import WOW from 'wowjs';
 class Career extends Component {
@@ -10,7 +8,7 @@ class Career extends Component {
         window.scrollTo(0, 0);
         // Activated WoW Js
         new WOW.WOW({
-            live: true,
+            live: false,
             mobile: false,
         }).init();
         // End Activated WoW Js
@@ -45,7 +43,7 @@ class Career extends Component {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="accordion" id="careerAccordion">
-                                    <div className="card">
+                                    <div className="card wow fadeInUp" animation-delay="0.8s" data-wow-delay="0.8s">
                                         <div className="card-header" id="headingOne">
                                             <h2 className="mb-0">
                                                 <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -101,7 +99,7 @@ class Career extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="card">
+                                    <div className="card wow fadeInUp" animation-delay="1.0s" data-wow-delay="1.0s">
                                         <div className="card-header" id="headingTwo">
                                             <h2 className="mb-0">
                                                 <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Article Writer        <i className="fas fa-chevron-down"></i>
@@ -156,13 +154,13 @@ class Career extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="card">
+                                    <div className="card wow fadeInUp" animation-delay="1.2s" data-wow-delay="1.2s">
                                         <div className="card-header" id="headingThree">
                                             <h2 className="mb-0">
-                                                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Game Artist       <i className="fas fa-chevron-down"></i></button>
+                                                <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Game Artist       <i className="fas fa-chevron-down"></i></button>
                                             </h2>
                                         </div>
-                                        <div id="collapseThree" className="collapse show" aria-labelledby="headingThree" data-parent="#careerAccordion">
+                                        <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#careerAccordion">
                                             <div className="card-body">
                                                 <div className="content-block">
                                                     <h3 className="vacancy">— No. of Vacancies : 02</h3>
@@ -210,7 +208,7 @@ class Career extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="card">
+                                    <div className="card wow fadeInUp" animation-delay="1.4s" data-wow-delay="1.4s">
                                         <div className="card-header" id="headingFour">
                                             <h2 className="mb-0">
                                                 <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Game Developer <i className="fas fa-chevron-down"></i></button>

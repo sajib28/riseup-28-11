@@ -1,1 +1,0 @@
-https://codesandbox.io/s/github/jeremenichelli/react-view-transition-example/tree/master/?from-embed

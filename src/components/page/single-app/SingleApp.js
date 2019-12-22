@@ -7,12 +7,20 @@ import SocialMedia from '../../commonTools/container/SocialMedia';
 import {
     Link
   } from "react-router-dom";
+  import WOW from 'wowjs';
 class SingleApp extends Component {
 componentDidMount() {
     window.scrollTo(0, 0);
+     // Activated WoW Js
+     new WOW.WOW({
+        live: false,
+        mobile: false,
+    }).init();
+    // End Activated WoW Js
 }
 
     render() {
+        let alt = "Rise Up Labs, iOS and Android Mobile Game Developer";
         return (
             <div className="page single-app">
                 {/* Main Menu */}
@@ -24,6 +32,7 @@ componentDidMount() {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="inroText display-bottom">
+                                {/* <h1 className="wow fadeInUp" animation-delay="1.5s" data-wow-delay="0.4s"><span className="text-color">demo1</span><br />demo2</h1> */}
                                 </div>
                             </div>
                         </div>
@@ -36,7 +45,7 @@ componentDidMount() {
                             <div className="col-lg-6">
                                 <h2 className="rawline-semibold">Game</h2>
                                 <div className="description">
-                                    <img src={require('../../../assets/img/treasure-wars.png')} alt="" />
+                                    <img src={require('../../../assets/img/treasure-wars.png')} alt={alt} />
                                     <div className="content">
                                         <h3>Treasure Wars</h3>
                                         <p>Realtime Multiplayer Game</p>
@@ -46,7 +55,7 @@ componentDidMount() {
                             <div className="col-lg-6">
                                 <h2 className="rawline-semibold">Client</h2>
                                 <div className="description">
-                                    <img src={require('../../../assets/img/robi.png')} alt="" />
+                                    <img src={require('../../../assets/img/robi.png')} alt={alt} />
                                     <div className="content">
                                         <h3>Robi Axiata Limited</h3>
                                     </div>
@@ -65,9 +74,9 @@ componentDidMount() {
                                 <div className="market-place">
                                     <h2 className="rawline-semibold">Available on:</h2>
                                     <ul className="list-unstyled">
-                                        <li><a rel="noopener noreferrer" href="/"><img src={require('../../../assets/img/apple-app-store.png')} alt="/" /></a></li>
-                                        <li><a rel="noopener noreferrer" href="/"><img src={require('../../../assets/img/google-play-store.png')} alt="" /></a></li>
-                                        <li><a rel="noopener noreferrer" href="/"><img src={require('../../../assets/img/amazon-store.png')} alt="" /></a></li>
+                                        <li><a rel="noopener noreferrer" href="/"><img src={require('../../../assets/img/apple-app-store.png')} alt={alt} /></a></li>
+                                        <li><a rel="noopener noreferrer" href="/"><img src={require('../../../assets/img/google-play-store.png')} alt={alt} /></a></li>
+                                        <li><a rel="noopener noreferrer" href="/"><img src={require('../../../assets/img/amazon-store.png')} alt={alt} /></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -99,7 +108,7 @@ componentDidMount() {
                                 </div>
                                 <div className="col-lg-4">
                                     <div className="img-block">
-                                        <img src={require('../../../assets/img/game-feature.png')} alt="" />
+                                        <img src={require('../../../assets/img/game-feature.png')} alt={alt} />
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +143,7 @@ componentDidMount() {
                                             <h2 className="rawline-semibold">Subscribe to our channel</h2>
                                             <p>Check out what's Rising. Fun videos of all Rise Up Labs games. Come and check out our Youtube channel</p>
                                         </div>
-                                        <a rel="noopener noreferrer" href="https://www.youtube.com/user/riseuplabs?sub_confirmation=1" target="_blank"><img src={require('../../../assets/img//youtube.png')} alt="" /></a>
+                                        <a rel="noopener noreferrer" href="https://www.youtube.com/user/riseuplabs?sub_confirmation=1" target="_blank"><img src={require('../../../assets/img//youtube.png')} alt={alt} /></a>
                                         <div className="social-media">
                                             <h5>Share: </h5>
                                             <SocialMedia/>

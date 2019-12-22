@@ -5,11 +5,11 @@
   -o-transition: $args;
   transition: $args;
 }
-@mixin transform($property) {
+@mixin transform($property...) {
   -webkit-transform: $property;
-  -moz-transition: $property;
+  -moz-transform: $property;
   -ms-transform: $property;
-  -o-transition: $property;
+  -o-transform: $property;
   transform: $property;
 }
 @mixin border-radius($radius) {
@@ -40,6 +40,13 @@
   transform: -moz-translate($args);
   transform: -ms-translate($args);
   transform: -o-translate($args);
+}
+@mixin rotate($args) {
+  transform: rotate($args);
+  transform: -webkit-rotate($args);
+  transform: -moz-rotate($args);
+  transform: -ms-rotate($args);
+  transform: -o-rotate($args);
 }
 @mixin linear-gradient($direction, $start-color, $end-color) {
   background: -webkit-linear-gradient($direction, $start-color, $end-color);
@@ -82,8 +89,9 @@
   -webkit-justify-content: $justify;
   -moz-justify-content: $justify;
   -ms-justify-content: $justify;
+  -o-justify-content: $justify;
   justify-content: $justify;
-  -ms-flex-pack: $justify;
+  
 }
 @mixin align-content($align) {
   -webkit-align-content: $align;
@@ -95,7 +103,7 @@
   -webkit-align-items: $align;
   -moz-align-items: $align;
   -ms-align-items: $align;
-  -ms-flex-align: $align;
+  -ms-align-items: $align;
   align-items: $align;
 }
 @mixin align-self($align) {

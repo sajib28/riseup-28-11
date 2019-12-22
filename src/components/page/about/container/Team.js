@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // team member loop
 const riseup_team_member_data = [
     {
-        member_img: require('../../../../assets/img/team/team-member-1.png'),
+        member_img: require('../../../../assets/img/team/team-member-1.jpg'),
         member_alt: "Ershadul Hoque Founder And CEO",
         member_name: "Ershadul Hoque",
         member_designation: "Founder & CEO",
@@ -23,7 +23,7 @@ const riseup_team_member_data = [
         ]
     },
     {
-        member_img: require('../../../../assets/img/team/team-member-2.png'),
+        member_img: require('../../../../assets/img/team/team-member-2.jpg'),
         member_alt: "Mohammad Zaman",
         member_name: "Mohammad Zaman",
         member_designation: "Advisor",
@@ -43,7 +43,7 @@ const riseup_team_member_data = [
         ]
     },
     {
-        member_img: require('../../../../assets/img/team/team-member-3.png'),
+        member_img: require('../../../../assets/img/team/team-member-3.jpg'),
         member_alt: "Francesco Patarnello",
         member_name: "Francesco Patarnello",
         member_designation: "Advisor",
@@ -63,7 +63,7 @@ const riseup_team_member_data = [
         ]
     },
     {
-        member_img: require('../../../../assets/img/team/team-member-4.png'),
+        member_img: require('../../../../assets/img/team/team-member-4.jpg'),
         member_alt: "Kazi Ahsan Habib",
         member_name: "Kazi Ahsan Habib",
         member_designation: "Advisor",
@@ -83,7 +83,7 @@ const riseup_team_member_data = [
         ]
     },
     {
-        member_img: require('../../../../assets/img/team/team-member-5.png'),
+        member_img: require('../../../../assets/img/team/team-member-5.jpg'),
         member_alt: "Md Zamilur Rahman	",
         member_name: "Md. Zamilur Rahman",
         member_designation: "Advisor",
@@ -103,7 +103,7 @@ const riseup_team_member_data = [
         ]
     },
     {
-        member_img: require('../../../../assets/img/team/team-member-5.png'),
+        member_img: require('../../../../assets/img/team/team-member-5.jpg'),
         member_alt: "Md Zamilur Rahman	",
         member_name: "Md. Zamilur Rahman",
         member_designation: "Advisor",
@@ -123,7 +123,7 @@ const riseup_team_member_data = [
         ]
     },
     {
-        member_img: require('../../../../assets/img/team/team-member-5.png'),
+        member_img: require('../../../../assets/img/team/team-member-5.jpg'),
         member_alt: "Md Zamilur Rahman	",
         member_name: "Md. Zamilur Rahman",
         member_designation: "Advisor",
@@ -143,7 +143,7 @@ const riseup_team_member_data = [
         ]
     },
     {
-        member_img: require('../../../../assets/img/team/team-member-5.png'),
+        member_img: require('../../../../assets/img/team/team-member-5.jpg'),
         member_alt: "Md Zamilur Rahman	",
         member_name: "Md. Zamilur Rahman",
         member_designation: "Advisor",
@@ -165,7 +165,9 @@ const riseup_team_member_data = [
 ]
 
 // get team member data
+let time=0.2;
 const get_member_data = riseup_team_member_data.map((single_member, i) => {
+    time += 0.1;
     const get_socal_all_data = single_member.social_media.map((single_social, i) => {
         return (
             <li key={i}>
@@ -176,7 +178,7 @@ const get_member_data = riseup_team_member_data.map((single_member, i) => {
     return (
 
         <div className="col-lg-3 col-md-4 col-sm-6" key={i}>
-            <div className="team-item">
+            <div className="team-item wow fadeInUp" animation-delay={time.toFixed(2)+'s'} data-wow-delay={time.toFixed(2)+'s'}>
                 <div className="team-member">
                     <figure className="team-member-img">
                             <img src={single_member.member_img} alt={single_member.member_alt} />

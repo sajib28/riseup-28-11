@@ -13,8 +13,6 @@ class ContactUs extends Component {
             emailError: '',
             phoneError: '',
             messageError: '',
-
-
         };
     }
 
@@ -64,10 +62,6 @@ class ContactUs extends Component {
             });
             return false
         }
-        // this.setState({
-        //     nameError:
-        //         name.length > 3 ? null : 'Name must be longer than 3 characters'
-        // });
     }
     validateEmail = () => {
         const { email } = this.state;
@@ -91,10 +85,6 @@ class ContactUs extends Component {
             });
             return false
         }
-        // this.setState({
-        //     emailError:
-        //         email.length > 3 ? null : 'Name must be longer than 3 characters'
-        // });
     }
     validatephone = () => {
         const { phone } = this.state;
@@ -116,11 +106,6 @@ class ContactUs extends Component {
             });
             return false
         }
-        // this.setState({
-        //     phoneError:
-        //         phone.length > 3 ? null : 'Name must be longer than 3 characters'
-
-        // });
     }
     validatecontactmessage = () => {
         const { contactmessage } = this.state;
